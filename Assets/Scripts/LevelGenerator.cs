@@ -14,8 +14,6 @@ public class LevelGenerator : MonoBehaviour
 
 	protected void Awake() => Instance = this;
 
-	protected void Start() => Generate();
-
 	public void Generate()
 		=> Instantiate(chuncks[Random.Range(0, chuncks.Length)], spawn.transform.position, Quaternion.identity, transform);
 }

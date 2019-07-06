@@ -10,5 +10,9 @@ public class GeneratorTrigger : MonoBehaviour
 		{
 			LevelGenerator.Instance.Generate();
 		}
+		else if (collision.gameObject.CompareTag("Destructor"))
+		{
+			Destroy(transform.parent.gameObject);
+		}
 	}
 }
