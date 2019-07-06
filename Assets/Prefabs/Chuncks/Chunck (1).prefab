@@ -1147,7 +1147,7 @@ Rigidbody2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1840040326639491797}
   m_BodyType: 2
-  m_Simulated: 1
+  m_Simulated: 0
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
@@ -1283,11 +1283,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2858917598712779039}
     m_Modifications:
-    - target: {fileID: 2603896271466814350, guid: 6948ec1d0bcf2c449bc7922592eb610f,
-        type: 3}
-      propertyPath: m_Name
-      value: GeneratorTrigger
-      objectReference: {fileID: 0}
     - target: {fileID: 2485763445432143912, guid: 6948ec1d0bcf2c449bc7922592eb610f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1342,6 +1337,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2603896271466814350, guid: 6948ec1d0bcf2c449bc7922592eb610f,
+        type: 3}
+      propertyPath: m_Name
+      value: GeneratorTrigger
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6948ec1d0bcf2c449bc7922592eb610f, type: 3}
