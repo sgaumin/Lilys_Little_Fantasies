@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d04317a38ce3a664f82eca52e7ac65c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 700
+  m_JumpForce: 350
   m_CrouchSpeed: 1
   m_MovementSmoothing: 0.05
   m_AirControl: 1
@@ -123,7 +123,7 @@ MonoBehaviour:
     m_Bits: 55
   m_GroundCheck: {fileID: 2309696616233477770}
   m_CeilingCheck: {fileID: 2309696617074063578}
-  m_CrouchDisableCollider: {fileID: 2309696615222579903}
+  m_CrouchDisableCollider: {fileID: 0}
   OnLandEvent:
     m_PersistentCalls:
       m_Calls:
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 2309696615222579901}
   animator: {fileID: 7044011816086351172}
-  runSpeed: 40
+  runSpeed: 10
 --- !u!212 &6569424509008690300
 SpriteRenderer:
   m_ObjectHideFlags: 0
