@@ -8,18 +8,18 @@ public class PlayerMovement : MonoBehaviour
 {
 	public static PlayerMovement Instance { get; private set; }
 
-	public CharacterController2D controller = null;
-	public float runSpeed = 40f;
-	public PaintScript paintPrefab;
+	[SerializeField] private float runSpeed = 40f;
 	[SerializeField] private Transform particleSpawn;
 
+	[SerializeField] private PaintScript paintPrefab;
+	[SerializeField] private int maxNumberOfParticles = 10;
+
+	private bool canAttack;
+	private CharacterController2D controller;
 	private Animator animator;
 	private float horizontalMove = 0f;
 	private bool jump = false;
-	private bool crouch = false;
 	private SpriteRenderer spriteRenderer;
-	private int numberOfParticles;
-	private int MAX_numberOfParticles;
 
 	public AnimatorController CurrentAnimatorController
 	{
@@ -32,7 +32,13 @@ public class PlayerMovement : MonoBehaviour
 
 	protected void Awake() => Instance = this;
 
-	protected void Start() => spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+	protected void Start()
+	{
+		controller = GetComponent<CharacterController2D>();
+		spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+		canAttack = true;
+	}
 
 	void Update()
 	{
@@ -45,13 +51,15 @@ public class PlayerMovement : MonoBehaviour
 			animator?.SetBool("IsJumping", true);
 		}
 
-		if (Input.GetButtonDown("Attack") && GameSystem.Instance.LevelType == LevelTypes.Nightmare)
+		if (Input.GetButtonDown("Attack") && GameSystem.Instance.LevelType == LevelTypes.Nightmare && canAttack)
 		{
 			animator?.SetTrigger("Attack");
-			numberOfParticles = 0;
-			MAX_numberOfParticles = 10;
-			StartCoroutine(SpawnParticles());
 		}
+	}
+
+	public void LaunchParticules()
+	{
+		StartCoroutine(SpawnParticles());
 	}
 
 	public void OnLanding() => animator?.SetBool("IsJumping", false);
@@ -68,21 +76,23 @@ public class PlayerMovement : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
+		controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
 		jump = false;
 	}
 
 	private IEnumerator SpawnParticles()
 	{
-		numberOfParticles++;
-		PaintScript paint;
+		canAttack = false;
 
-		for (int i = 0; i < MAX_numberOfParticles; i++)
+		int numberOfParticles = 1;
+		for (int i = 0; i < maxNumberOfParticles; i++)
 		{
-			yield return new WaitForSeconds(0.05f);
-			paint = Instantiate(paintPrefab, particleSpawn.position + new Vector3(0, 0.5f - 0.15f * numberOfParticles), Quaternion.identity);
+			yield return new WaitForSeconds(0.02f);
+			PaintScript paint = Instantiate(paintPrefab, particleSpawn.position + new Vector3(0, 0.6f - 0.1f * numberOfParticles), Quaternion.identity);
 			paint.Launch(new Vector2(0.45f * Random.value * transform.localScale.x, 0.45f * Random.value));
 			numberOfParticles++;
 		}
+
+		canAttack = true;
 	}
 }
