@@ -1,36 +1,72 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Monster : MonoBehaviour
 {
-	[SerializeField] private float movingDistance = 0;
-	[SerializeField] private Animator animator = null;
-	[SerializeField] private MonsterType mosnterType = MonsterType.Static; 	 
-	
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	[SerializeField] private float animationDuration = 2;
+	[SerializeField] private float maxMovingDistance = 0;
+//	[SerializeField] private Animator animator = null;
+	[SerializeField] private MonsterType mosnterType = MonsterType.Static;
 
-	public void OnCollisionEnter2D(Collision2D collision)
+	// Start is called before the first frame update
+	void Start()
 	{
-		if (collision.gameObject.CompareTag(""))
+		float durationQuarter = animationDuration / 4;
+		float halfDistance = maxMovingDistance / 2;
+
+		switch (mosnterType)
 		{
-			if (animator != null)
-				animator.SetTrigger("Tranform"); 
-
-			if(mosnterType != MonsterType.Vertical)
-			{
-				var flower = ResourceManager.Instance.GetObject(ObjectType.Flower); 
-				if( flower != null )
+			case MonsterType.Vertical:
 				{
-					flower.transform.position = this.transform.position; 
+					Sequence sequence = DOTween.Sequence();
+					sequence.Append(transform.DOMoveY(transform.position.y - halfDistance, durationQuarter).SetEase(Ease.Linear));
+					sequence.Append(transform.DOMoveY(transform.position.y + halfDistance, durationQuarter * 2).SetEase(Ease.Linear));
+					sequence.Append(transform.DOMoveY(transform.position.y, durationQuarter).SetEase(Ease.Linear));
+					sequence.SetLoops(-1);
 				}
+				break;
+			case MonsterType.Horizontal:
+				{
+					Sequence sequence = DOTween.Sequence();
+					sequence.Append(transform.DOMoveX(transform.position.x - halfDistance, durationQuarter).SetEase(Ease.Linear));
+					sequence.Append(transform.DOMoveX(transform.position.x + halfDistance, durationQuarter * 2).SetEase(Ease.Linear));
+					sequence.Append(transform.DOMoveX(transform.position.x, durationQuarter).SetEase(Ease.Linear));
 
-				Object.Destroy(this.gameObject); 
-			}
+					sequence.SetLoops(-1);
+				}
+				break;
 		}
+	}
+
+	public void OnTriggerEnter2D(Collider2D collider)
+	{
+		Debug.Log(" Collision with monster");
+		if (collider.gameObject.CompareTag("Player")) // KJ : This is mock. You have to put the name of the brush/bullete
+		{
+			if (mosnterType != MonsterType.Vertical)
+			{
+				GameObject flower = ResourceManager.Instance.GetObject(ObjectType.Flower);
+				if (flower != null)
+				{
+					flower.transform.position = this.transform.position;
+				}
+			}
+
+			GameObject smoke = ResourceManager.Instance.GetObject(ObjectType.Smoke);
+			if (smoke != null)
+			{
+				smoke.transform.position = this.transform.position;
+			}
+
+			Object.Destroy(this.gameObject);
+
+		}
+	}
+	public void OnTriggerExit2D(Collider2D collider)
+	{
+		Debug.Log(" OnCollisionExit2D"); 
 	}
 }
