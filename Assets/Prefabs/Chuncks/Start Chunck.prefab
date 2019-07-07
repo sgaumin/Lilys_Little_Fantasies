@@ -58,9 +58,9 @@ GameObject:
   - component: {fileID: 1928543462985435496}
   - component: {fileID: 3822576868908508904}
   - component: {fileID: 4568124210506641089}
-  - component: {fileID: 4895134874523610930}
-  - component: {fileID: 3900696144825949140}
-  m_Layer: 0
+  - component: {fileID: 1731169796}
+  - component: {fileID: 1731169795}
+  m_Layer: 9
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -995,7 +995,7 @@ Tilemap:
   m_TileColorArray:
   - m_RefCount: 90
     m_Data: {r: 1, g: 1, b: 1, a: 1}
-  m_AnimationFrameRate: 1
+  m_AnimationFrameRate: 10
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -9, y: -5, z: 0}
   m_Size: {x: 18, y: 10, z: 1}
@@ -1077,7 +1077,7 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
---- !u!50 &4895134874523610930
+--- !u!50 &1731169796
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -1085,20 +1085,20 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2649176842336829822}
-  m_BodyType: 2
-  m_Simulated: 0
+  m_BodyType: 1
+  m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
---- !u!66 &3900696144825949140
+--- !u!66 &1731169795
 CompositeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1196,6 +1196,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1938250744548510388}
     m_Modifications:
+    - target: {fileID: 2603896271466814350, guid: 6948ec1d0bcf2c449bc7922592eb610f,
+        type: 3}
+      propertyPath: m_Name
+      value: GeneratorTrigger
+      objectReference: {fileID: 0}
     - target: {fileID: 2485763445432143912, guid: 6948ec1d0bcf2c449bc7922592eb610f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1250,11 +1255,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2603896271466814350, guid: 6948ec1d0bcf2c449bc7922592eb610f,
-        type: 3}
-      propertyPath: m_Name
-      value: GeneratorTrigger
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6948ec1d0bcf2c449bc7922592eb610f, type: 3}
