@@ -58,9 +58,9 @@ GameObject:
   - component: {fileID: 1493412153463136517}
   - component: {fileID: 4284822204998700677}
   - component: {fileID: 8003065230928248147}
-  - component: {fileID: 3472500816862570236}
-  - component: {fileID: 6388578299499787727}
-  m_Layer: 0
+  - component: {fileID: 4366318376893467798}
+  - component: {fileID: 4363682717694082066}
+  m_Layer: 9
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1218,7 +1218,7 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
---- !u!50 &3472500816862570236
+--- !u!50 &4366318376893467798
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -1226,8 +1226,8 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3078771313031014675}
-  m_BodyType: 2
-  m_Simulated: 0
+  m_BodyType: 1
+  m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
@@ -1237,9 +1237,9 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
---- !u!66 &6388578299499787727
+--- !u!66 &4363682717694082066
 CompositeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1373,6 +1373,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1485122137961177817}
     m_Modifications:
+    - target: {fileID: 2603896271466814350, guid: 6948ec1d0bcf2c449bc7922592eb610f,
+        type: 3}
+      propertyPath: m_Name
+      value: GeneratorTrigger
+      objectReference: {fileID: 0}
     - target: {fileID: 2485763445432143912, guid: 6948ec1d0bcf2c449bc7922592eb610f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1427,11 +1432,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2603896271466814350, guid: 6948ec1d0bcf2c449bc7922592eb610f,
-        type: 3}
-      propertyPath: m_Name
-      value: GeneratorTrigger
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6948ec1d0bcf2c449bc7922592eb610f, type: 3}
