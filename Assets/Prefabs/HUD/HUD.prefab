@@ -1083,6 +1083,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: {fileID: 2819660783423851267}
+  insanityBar: {fileID: 9078058748647227948}
+  insanityText: {fileID: 2523293556986401857}
 --- !u!1 &7953505571563168358
 GameObject:
   m_ObjectHideFlags: 0
