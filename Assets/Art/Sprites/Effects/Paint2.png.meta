@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: 8eb0ad91bce197943baee259725f7114
+guid: 823a5fd6cff699a46af681a3e240526b
 TextureImporter:
   fileIDToRecycleName:
-    21300000: PaintTrail 0
+    21300000: Paint2 0
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -61,7 +61,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 2
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4
+    maxTextureSize: 16
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -74,13 +74,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PaintTrail 0
+      name: Paint2 0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 4
-        height: 4
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -88,7 +88,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 357f2521a81e97a40b74fad5ff17de7a
+      spriteID: c895e37730a90204c9163fe5209c5e1c
       vertices: []
       indices: 
       edges: []
@@ -96,7 +96,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 0e7891aa4615f6c43aa97102b286dbec
+    spriteID: b349ec1a360ee98459698617356154c4
     vertices: []
     indices: 
     edges: []
