@@ -7,10 +7,12 @@ public class Lava : MonoBehaviour
 	[SerializeField] private float forceAmount;
 	[SerializeField] private float animSpeedDifference;
 
+	private AudioSource audioSource;
 	private Animator anim;
 
 	private void Start()
 	{
+		audioSource = GetComponent<AudioSource>();
 		anim = GetComponentInChildren<Animator>();
 		anim.speed = Random.Range(1f - animSpeedDifference, 1f + animSpeedDifference);
 	}
@@ -23,6 +25,7 @@ public class Lava : MonoBehaviour
 			rb?.AddForce(Vector2.up * forceAmount);
 
 			collision.GetComponent<PlayerMovement>().Hitted();
+			audioSource.Play();
 		}
 	}
 }

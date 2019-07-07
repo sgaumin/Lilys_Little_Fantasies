@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditor.Animations;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class PlayerMovement : MonoBehaviour
 {
 	public static PlayerMovement Instance { get; private set; }
@@ -14,6 +15,12 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] private PaintScript paintPrefab;
 	[SerializeField] private int maxNumberOfParticles = 10;
 
+	[Header("Audio")]
+	[SerializeField] private AudioClip jumpSound;
+	[SerializeField] private AudioClip attackSound;
+	[SerializeField] private AudioClip[] hitSound;
+
+	private AudioSource audioSource;
 	private bool canAttack;
 	private CharacterController2D controller;
 	private Animator animator;
@@ -34,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
 
 	protected void Start()
 	{
+		audioSource = GetComponent<AudioSource>();
 		controller = GetComponent<CharacterController2D>();
 		spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
@@ -47,6 +55,10 @@ public class PlayerMovement : MonoBehaviour
 
 		if (Input.GetButtonDown("Jump"))
 		{
+			//Audio
+			audioSource.clip = jumpSound;
+			audioSource.Play();
+
 			jump = true;
 			animator?.SetBool("IsJumping", true);
 		}
@@ -66,6 +78,10 @@ public class PlayerMovement : MonoBehaviour
 
 	public void Hitted()
 	{
+		//Audio
+		audioSource.clip = hitSound[Random.Range(0, hitSound.Length)];
+		audioSource.Play();
+
 		animator?.SetTrigger("IsHitted");
 
 		Sequence Anim = DOTween.Sequence();
@@ -82,6 +98,10 @@ public class PlayerMovement : MonoBehaviour
 
 	private IEnumerator SpawnParticles()
 	{
+		//Audio
+		audioSource.clip = attackSound;
+		audioSource.Play();
+
 		canAttack = false;
 
 		int numberOfParticles = 1;
