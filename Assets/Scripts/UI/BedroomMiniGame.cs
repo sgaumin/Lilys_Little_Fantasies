@@ -23,12 +23,6 @@ public class BedroomMiniGame : MonoBehaviour
 
 	}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
 	public void Initialize( float sizePercent = 1 ,  float duration = 1  , Ease ease = Ease.Linear )
 	{
 		animationDuration = duration;
