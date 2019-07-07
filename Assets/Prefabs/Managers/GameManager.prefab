@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8875076384926587128}
   - component: {fileID: 3235065907283270487}
   - component: {fileID: 5757387318137705855}
+  - component: {fileID: 5678630149009215646}
   - component: {fileID: 4425730198703570150}
   m_Layer: 0
   m_Name: GameManager
@@ -46,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8b78be85f58474e8e304b0e4ba63f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelTypes: 0
+  levelTypes: 1
 --- !u!114 &3235065907283270487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,6 +74,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bedroomAnimator: {fileID: 9100000, guid: afd9afc0f69514644b56bf90236bfbdb, type: 2}
   nightmareAnimator: {fileID: 9100000, guid: 6c0783ed992772740a90a8ac8ee8094c, type: 2}
+--- !u!114 &5678630149009215646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5781611409483811789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 840b2e3cf3a8a5142b796a02ad18a67c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musics:
+  - {fileID: 8300000, guid: 5791b7d9d5a9b6a4eaa4e152724ddc8b, type: 3}
+  - {fileID: 8300000, guid: 656fab546eb7d7e478d0fd2a627310c4, type: 3}
+  - {fileID: 8300000, guid: 23dc75fbe8cca48448e8cc8d21320bee, type: 3}
 --- !u!82 &4425730198703570150
 AudioSource:
   m_ObjectHideFlags: 0
@@ -87,7 +104,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
