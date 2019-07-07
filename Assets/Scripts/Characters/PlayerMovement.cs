@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,10 @@ public class PlayerMovement : MonoBehaviour
 	float horizontalMove = 0f;
 	bool jump = false;
 	bool crouch = false;
+
+	private SpriteRenderer spriteRenderer;
+
+	protected void Start() => spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
 	void Update()
 	{
@@ -32,11 +37,18 @@ public class PlayerMovement : MonoBehaviour
 
 	public void OnLanding() => animator?.SetBool("IsJumping", false);
 
-	public void Hitted() => animator?.SetTrigger("IsHitted");
+	public void Hitted()
+	{
+		animator?.SetTrigger("IsHitted");
+
+		Sequence Anim = DOTween.Sequence();
+		Anim.Append(spriteRenderer.DOColor(Color.black, 0.08f)).Append(spriteRenderer.DOColor(Color.white, 0.08f))
+			.Append(spriteRenderer.DOColor(Color.black, 0.08f)).Append(spriteRenderer.DOColor(Color.white, 0.08f));
+		Anim.Play();
+	}
 
 	void FixedUpdate()
 	{
-		// Move our character
 		controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
 		jump = false;
 	}
