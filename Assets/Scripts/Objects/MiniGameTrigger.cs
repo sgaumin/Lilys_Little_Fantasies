@@ -12,7 +12,8 @@ public class MiniGameTrigger : MonoBehaviour
 	}
 
 	[SerializeField] MiniGameType miniGameType = MiniGameType.Book;
-	[SerializeField] Transform target = null;
+	[SerializeField] Transform buttonPosition = null;
+	[SerializeField] Transform barPosition = null;
 
 	private MiniGameButton miniGameButton = null;
 	private BedroomMiniGame miniGameBar = null; 
@@ -29,8 +30,8 @@ public class MiniGameTrigger : MonoBehaviour
 				miniGameButton = buttonObject.GetComponent<MiniGameButton>();
 				miniGameButton?.Initialize();
 
-				if (target != null)
-					miniGameButton.transform.position = target.position;
+				if (buttonPosition != null)
+					miniGameButton.transform.position = buttonPosition.position;
 
 				miniGameState = MiniGameState.ShowButton; 
 			}
@@ -61,6 +62,9 @@ public class MiniGameTrigger : MonoBehaviour
 						var gameBar = ResourceManager.Instance.GetObject(ObjectType.MiniGame);
 						if (gameBar != null)
 						{
+							if (barPosition != null)
+								gameBar.transform.position = barPosition.position;
+
 							miniGameBar = gameBar.GetComponent<BedroomMiniGame>(); 
 
 							switch (miniGameType)
