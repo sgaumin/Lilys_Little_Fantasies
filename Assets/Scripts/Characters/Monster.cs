@@ -8,7 +8,7 @@ public class Monster : MonoBehaviour
 {
 	[SerializeField] private float animationDuration = 2;
 	[SerializeField] private float maxMovingDistance = 0;
-//	[SerializeField] private Animator animator = null;
+	//	[SerializeField] private Animator animator = null;
 	[SerializeField] private MonsterType mosnterType = MonsterType.Static;
 
 	// Start is called before the first frame update
@@ -26,6 +26,7 @@ public class Monster : MonoBehaviour
 					sequence.Append(transform.DOMoveY(transform.position.y + halfDistance, durationQuarter * 2).SetEase(Ease.Linear));
 					sequence.Append(transform.DOMoveY(transform.position.y, durationQuarter).SetEase(Ease.Linear));
 					sequence.SetLoops(-1);
+					sequence.Play();
 				}
 				break;
 			case MonsterType.Horizontal:
@@ -36,6 +37,7 @@ public class Monster : MonoBehaviour
 					sequence.Append(transform.DOMoveX(transform.position.x, durationQuarter).SetEase(Ease.Linear));
 
 					sequence.SetLoops(-1);
+					sequence.Play();
 				}
 				break;
 		}
@@ -67,6 +69,6 @@ public class Monster : MonoBehaviour
 	}
 	public void OnTriggerExit2D(Collider2D collider)
 	{
-		Debug.Log(" OnCollisionExit2D"); 
+		Debug.Log(" OnCollisionExit2D");
 	}
 }
