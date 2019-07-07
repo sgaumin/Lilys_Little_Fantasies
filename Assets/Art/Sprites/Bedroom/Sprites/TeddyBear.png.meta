@@ -1,9 +1,8 @@
 fileFormatVersion: 2
-guid: 150a86e786b113b40a4e37cf61711a25
+guid: 01f1485f8263a08429b9c65afb07c909
 TextureImporter:
   fileIDToRecycleName:
-    21300000: LittleGirl 0
-    21300002: LittleGirl 1
+    21300000: TeddyBear 0
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -75,13 +74,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: LittleGirl 0
+      name: TeddyBear 0
       rect:
         serializedVersion: 2
         x: 0
-        y: 12
+        y: 9
         width: 16
-        height: 20
+        height: 23
       alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -89,27 +88,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bfd0719ac373f2d49af0ac6cd7181af7
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: LittleGirl 1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 12
-        width: 16
-        height: 20
-      alignment: 7
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a219c3225545198429b1119abe200d8a
+      spriteID: b3bb8af576aa45d48abd56e137c5c113
       vertices: []
       indices: 
       edges: []
@@ -117,7 +96,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 7ed5e78b41adea040961b7c4c2db86b0
+    spriteID: e565d52362c5dd84bb7fc449606c930b
     vertices: []
     indices: 
     edges: []

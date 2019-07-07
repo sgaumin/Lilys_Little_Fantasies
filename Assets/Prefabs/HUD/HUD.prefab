@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1576164606040326278}
   - component: {fileID: 6974544789570131444}
   - component: {fileID: 7213887347017878439}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 6478088198383945470}
   - component: {fileID: 9003886453088913633}
   - component: {fileID: 2819660783423851267}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 2121297496022829723}
   - component: {fileID: 76988266746652412}
   - component: {fileID: 3190750534298619061}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Insanity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -341,7 +341,7 @@ GameObject:
   - component: {fileID: 7539346915451446409}
   - component: {fileID: 2273249260845598626}
   - component: {fileID: 8610645949320009044}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -413,7 +413,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4690886411650660590}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -451,7 +451,7 @@ GameObject:
   - component: {fileID: 378887967932266246}
   - component: {fileID: 4184056209892461010}
   - component: {fileID: 8870822747945110440}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CustomBorder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -526,7 +526,7 @@ GameObject:
   - component: {fileID: 6146341555967341876}
   - component: {fileID: 4151909135435407542}
   - component: {fileID: 2523293556986401857}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BarTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -701,7 +701,7 @@ GameObject:
   - component: {fileID: 5016933906874943271}
   - component: {fileID: 5385115422843061830}
   - component: {fileID: 130016410960031428}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -799,7 +799,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4163579636273772870}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -837,7 +837,7 @@ GameObject:
   - component: {fileID: 7830590251158856514}
   - component: {fileID: 1664459276616333253}
   - component: {fileID: 507376512401902703}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -911,7 +911,7 @@ GameObject:
   - component: {fileID: 6042968799755019104}
   - component: {fileID: 9078058748647227948}
   - component: {fileID: 7845333069728599418}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1022,7 +1022,7 @@ GameObject:
   - component: {fileID: 7957099917015547818}
   - component: {fileID: 9022162676053993607}
   - component: {fileID: 6789506055688153703}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1095,7 +1095,7 @@ GameObject:
   - component: {fileID: 3999466265879913844}
   - component: {fileID: 9019325114168730336}
   - component: {fileID: 2701902263341675251}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: InsanityBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
