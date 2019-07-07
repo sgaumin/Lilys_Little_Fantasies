@@ -1,27 +1,36 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+	public static PlayerMovement Instance { get; private set; }
+
 	public CharacterController2D controller = null;
-	public Animator animator = null;
-
 	public float runSpeed = 40f;
-
 	public PaintScript paintPrefab;
-
 	[SerializeField] private Transform particleSpawn;
 
-	float horizontalMove = 0f;
-	bool jump = false;
-	bool crouch = false;
-
+	private Animator animator;
+	private float horizontalMove = 0f;
+	private bool jump = false;
+	private bool crouch = false;
 	private SpriteRenderer spriteRenderer;
-
 	private int numberOfParticles;
 	private int MAX_numberOfParticles;
+
+	public AnimatorController CurrentAnimatorController
+	{
+		set
+		{
+			animator = GetComponentInChildren<Animator>();
+			animator.runtimeAnimatorController = value;
+		}
+	}
+
+	protected void Awake() => Instance = this;
 
 	protected void Start() => spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
@@ -36,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
 			animator?.SetBool("IsJumping", true);
 		}
 
-		if (Input.GetButtonDown("Attack"))
+		if (Input.GetButtonDown("Attack") && GameSystem.Instance.LevelType == LevelTypes.Nightmare)
 		{
 			animator?.SetTrigger("Attack");
 			numberOfParticles = 0;
