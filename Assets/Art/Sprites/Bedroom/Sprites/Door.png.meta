@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 318acf71f472fee458c4af59fb8ea45d
+guid: d13c2ca25ba51774ca3ede7bca3dd1bc
 TextureImporter:
   fileIDToRecycleName:
     21300000: Door 0
@@ -46,7 +46,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -81,14 +81,14 @@ TextureImporter:
         y: 0
         width: 32
         height: 64
-      alignment: 7
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e400d49f07284ba4685516483e13a346
+      spriteID: 626fbfc142976214b9ac1036127934ce
       vertices: []
       indices: 
       edges: []
@@ -96,7 +96,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 7f6b5bc23161aa94a96bbbbe5dfdc58b
+    spriteID: c4900eb26ae18794796fb61c240e4bcd
     vertices: []
     indices: 
     edges: []

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 348a545a93d96b14ab8ef45e1c4cecf0
+guid: f6ae84223bdd86d4c876b337906c8e3f
 TextureImporter:
   fileIDToRecycleName:
     21300000: Bed 0
@@ -46,7 +46,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -78,17 +78,17 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 12
-        width: 46
-        height: 20
-      alignment: 7
+        y: 0
+        width: 64
+        height: 32
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4055b11374ac2264ca2f82e122e80044
+      spriteID: fbee87fbd92deaf4bbdf52f35aa18b33
       vertices: []
       indices: 
       edges: []
@@ -96,7 +96,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 6ada01d2ac6f1564c800c1f6fbfd58ad
+    spriteID: 7d1994199bdd2e74e88abb4e454e69b5
     vertices: []
     indices: 
     edges: []

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 01f1485f8263a08429b9c65afb07c909
+guid: 0c901f4d6d6b53346a4fd02144761e2d
 TextureImporter:
   fileIDToRecycleName:
     21300000: TeddyBear 0
@@ -46,7 +46,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -78,17 +78,17 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 9
-        width: 16
-        height: 23
-      alignment: 7
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b3bb8af576aa45d48abd56e137c5c113
+      spriteID: 40ad23383e7d1684b8bd123ca71cb1d7
       vertices: []
       indices: 
       edges: []
@@ -96,7 +96,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: e565d52362c5dd84bb7fc449606c930b
+    spriteID: 1fddd3d9ddeaaa249a0e11b34585db6d
     vertices: []
     indices: 
     edges: []

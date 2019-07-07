@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a12608ef19abed147a179a26fe3f5a33
+guid: 73c2e2cd6709e804e9e0c715cfefc564
 TextureImporter:
   fileIDToRecycleName:
     21300000: Jar4 0
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -79,17 +79,17 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 2
-        width: 10
-        height: 14
-      alignment: 7
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4b58c8e2f2facc84889bd0d2677cfbd9
+      spriteID: 260cbe67f7b3c8e4db6ca15aca147fe7
       vertices: []
       indices: 
       edges: []
@@ -98,18 +98,18 @@ TextureImporter:
       name: Jar4 1
       rect:
         serializedVersion: 2
-        x: 10
-        y: 2
-        width: 10
-        height: 14
-      alignment: 7
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e025f95bbbb9a1641b221252eb74c624
+      spriteID: 4c987285235de4f4aaff150843bfd2ac
       vertices: []
       indices: 
       edges: []
@@ -117,7 +117,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: ae2eae439ee6aea41a330a5de8194dda
+    spriteID: d14161918c93ace4fa195e1d577543b2
     vertices: []
     indices: 
     edges: []

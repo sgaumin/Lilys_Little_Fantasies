@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: dd08cca268143674387bfcc43ad79d2c
+guid: 35a039137a69e5d49aef294a3c02ead1
 TextureImporter:
   fileIDToRecycleName:
     21300000: Floor3 0
@@ -46,7 +46,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -81,14 +81,14 @@ TextureImporter:
         y: 0
         width: 16
         height: 16
-      alignment: 7
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a184c4620bcae204fa30f5669431e374
+      spriteID: b40a1fa39c15b4647b8b49b57840d620
       vertices: []
       indices: 
       edges: []
@@ -96,7 +96,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: b617ca9e8e9ae2e49b08737664058d97
+    spriteID: 494fabc711bab194bac7ba5acf06c435
     vertices: []
     indices: 
     edges: []
