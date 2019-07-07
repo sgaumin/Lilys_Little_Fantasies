@@ -6,25 +6,27 @@ using UnityEngine;
 
 public class HUD : MonoBehaviour
 {
+	public static HUD Instance { get; private set; }
+
 	[SerializeField] private TextMeshProUGUI timer;
+
 	private float time;
 	private Sequence timerSequence;
 	private bool timerWarning;
-	// Start is called before the first frame update
-	void Start()
-    {
-		DOTween.defaultAutoPlay = AutoPlay.None;
-		DOTween.defaultAutoKill = false;
+
+	protected void Awake() => Instance = this;
+
+	protected void Start()
+	{
 		Tween timerAnim1 = timer.DOColor(Color.red, 0.1f);
 		Tween timerAnim2 = timer.DOColor(Color.white, 0.1f);
 		timerSequence = DOTween.Sequence();
-		timerSequence.Append(timerAnim1).Append(timerAnim2).Insert(0f, timer.transform.DOScale(1.2f,0.2f)).Insert(0f, timer.transform.DOScale(1f, 0.2f)).SetLoops(-1);
+		timerSequence.Append(timerAnim1).Append(timerAnim2).Insert(0f, timer.transform.DOScale(1.2f, 0.2f)).Insert(0f, timer.transform.DOScale(1f, 0.2f)).SetLoops(-1);
 		timerWarning = false;
 	}
 
-    // Update is called once per frame
-    void Update()
-    {
+	protected void Update()
+	{
 		time += Time.deltaTime;
 
 		string minutes = Mathf.Floor(time / 60).ToString("00");
@@ -32,7 +34,7 @@ public class HUD : MonoBehaviour
 
 		timer.text = minutes + ":" + seconds;
 
-		if (Mathf.Floor(time%60)>=45f&&!timerWarning)
+		if (Mathf.Floor(time % 60) >= 45f && !timerWarning)
 		{
 			timerWarning = true;
 			timerSequence.Play();
