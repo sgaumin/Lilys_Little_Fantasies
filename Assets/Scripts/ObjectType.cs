@@ -4,5 +4,6 @@
 	Flower, 
 	FlyingMoster,
 	CreepingMonster, 
-	StaticMonster
+	StaticMonster ,
+	Smoke
 }
