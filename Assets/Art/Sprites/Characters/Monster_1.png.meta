@@ -1,8 +1,11 @@
 fileFormatVersion: 2
-guid: a5eecbe2eeb4b19498cac5f90be3fdf1
+guid: 02b21eedfa67bf5499649dddb8320166
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Background 0
+    21300000: Monster_1 0
+    21300002: Monster_1 1
+    21300004: Monster_1 2
+    21300006: Monster_1 3
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -46,7 +49,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -61,7 +64,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 2
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 64
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -74,21 +77,81 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Background 0
+      name: Monster_1 0
       rect:
         serializedVersion: 2
         x: 0
-        y: 968
-        width: 1920
-        height: 1080
-      alignment: 7
+        y: 16
+        width: 32
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1daf5c0c007de5341ad2b6fad21539e0
+      spriteID: 3fcf2d5df7730d4419da69ab09cc66dc
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Monster_1 1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f09347ed1911ae449802ea25f2412e71
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Monster_1 2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ab99346a9adbad41995603d3f274b9d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Monster_1 3
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43d4c4928fd599f4e98a76173471eebb
       vertices: []
       indices: 
       edges: []
@@ -96,7 +159,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 26d5a46651e407844b4101225351fc9f
+    spriteID: b1282cf27c5fb514eaba5df09c3b45fe
     vertices: []
     indices: 
     edges: []
