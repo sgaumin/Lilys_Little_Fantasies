@@ -19,7 +19,9 @@ public class BedroomMiniGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    }
+		Initialize( ); 
+
+	}
 
     // Update is called once per frame
     void Update()
@@ -50,8 +52,8 @@ public class BedroomMiniGame : MonoBehaviour
 				target.localPosition = position;
 				
 				sequenceAnim = DOTween.Sequence();
-				sequenceAnim.Append(transform.DOLocalMoveX(target.localPosition.x + innerBoxRectTransform.rect.width, duration).SetEase(ease));
-				sequenceAnim.Append(transform.DOLocalMoveX(target.localPosition.x + innerBoxRectTransform.rect.width, duration).SetEase(ease));
+				sequenceAnim.Append(target.DOLocalMoveX(target.localPosition.x + innerBoxRectTransform.rect.width, duration).SetEase(ease));
+				sequenceAnim.Append(target.DOLocalMoveX(target.localPosition.x , duration).SetEase(ease));
 				sequenceAnim.SetLoops(-1);
 
 			}
@@ -67,6 +69,8 @@ public class BedroomMiniGame : MonoBehaviour
 			sequenceAnim.Kill();
 			sequenceAnim = null; 
 		}
+
+		Debug.Log( GetResult().ToString()) ; 
 	}
 
 	public bool GetResult()
@@ -74,6 +78,7 @@ public class BedroomMiniGame : MonoBehaviour
 		float targetLastXPos = target.localPosition.x;
 		float aimDistance = aimMaxPercent * innerBoxRectTransform.rect.width / 2;
 
+		Debug.Log(targetLastXPos + "  " + aimDistance);
 		if (targetLastXPos > -aimDistance && targetLastXPos < aimDistance)
 			return true;
 
