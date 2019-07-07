@@ -11,6 +11,8 @@ public class Monster : MonoBehaviour
 //	[SerializeField] private Animator animator = null;
 	[SerializeField] private MonsterType mosnterType = MonsterType.Static;
 
+	private Sequence sequence = null; 
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -21,7 +23,7 @@ public class Monster : MonoBehaviour
 		{
 			case MonsterType.Vertical:
 				{
-					Sequence sequence = DOTween.Sequence();
+					sequence = DOTween.Sequence();
 					sequence.Append(transform.DOMoveY(transform.position.y - halfDistance, durationQuarter).SetEase(Ease.Linear));
 					sequence.Append(transform.DOMoveY(transform.position.y + halfDistance, durationQuarter * 2).SetEase(Ease.Linear));
 					sequence.Append(transform.DOMoveY(transform.position.y, durationQuarter).SetEase(Ease.Linear));
@@ -30,7 +32,7 @@ public class Monster : MonoBehaviour
 				break;
 			case MonsterType.Horizontal:
 				{
-					Sequence sequence = DOTween.Sequence();
+					sequence = DOTween.Sequence();
 					sequence.Append(transform.DOMoveX(transform.position.x - halfDistance, durationQuarter).SetEase(Ease.Linear));
 					sequence.Append(transform.DOMoveX(transform.position.x + halfDistance, durationQuarter * 2).SetEase(Ease.Linear));
 					sequence.Append(transform.DOMoveX(transform.position.x, durationQuarter).SetEase(Ease.Linear));
@@ -65,8 +67,18 @@ public class Monster : MonoBehaviour
 
 		}
 	}
+
 	public void OnTriggerExit2D(Collider2D collider)
 	{
 		Debug.Log(" OnCollisionExit2D"); 
+	}
+
+	public void OnDestroy()
+	{
+		if (sequence != null)
+		{
+			sequence.Kill();
+			sequence = null;
+		}
 	}
 }
