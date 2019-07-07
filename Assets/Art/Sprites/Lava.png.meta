@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: 150a86e786b113b40a4e37cf61711a25
+guid: 5ae77595e8794df4eb35405a5d92f48e
 TextureImporter:
   fileIDToRecycleName:
-    21300000: LittleGirl 0
-    21300002: LittleGirl 1
+    21300000: Lava 0
+    21300002: Lava 1
+    21300004: Lava 2
+    21300006: Lava 3
+    21300008: Lava 4
+    21300010: Lava 5
+    21300012: Lava 6
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -62,7 +67,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 2
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 32
+    maxTextureSize: 64
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -73,7 +78,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   - serializedVersion: 2
     buildTarget: Standalone
-    maxTextureSize: 32
+    maxTextureSize: 64
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -84,7 +89,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   - serializedVersion: 2
     buildTarget: WebGL
-    maxTextureSize: 32
+    maxTextureSize: 64
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -97,41 +102,141 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: LittleGirl 0
+      name: Lava 0
       rect:
         serializedVersion: 2
         x: 0
-        y: 12
+        y: 16
         width: 16
-        height: 20
-      alignment: 7
-      pivot: {x: 0, y: 0}
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bfd0719ac373f2d49af0ac6cd7181af7
+      spriteID: 956c7ef78a229394bb87d2c05c4557eb
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LittleGirl 1
+      name: Lava 1
       rect:
         serializedVersion: 2
         x: 16
-        y: 12
+        y: 16
         width: 16
-        height: 20
-      alignment: 7
-      pivot: {x: 0, y: 0}
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a219c3225545198429b1119abe200d8a
+      spriteID: 44e1064df0bf8ea4b86beed76ca9f805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lava 2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad8ed3417e4d7f64d9b530081e89a6ed
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lava 3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df0bd4e9bc09ab042abc2eb336e0bdac
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lava 4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf84febe193fb4b47bb1417290c57fd8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lava 5
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19c270fce1748224790367a18d54da5b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lava 6
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 255ba63a4dc465648937b69802334330
       vertices: []
       indices: 
       edges: []
@@ -139,7 +244,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 7ed5e78b41adea040961b7c4c2db86b0
+    spriteID: f4c1bae4e9789a4449a6eb3023ec5415
     vertices: []
     indices: 
     edges: []

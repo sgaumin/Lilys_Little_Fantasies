@@ -1,9 +1,8 @@
 fileFormatVersion: 2
-guid: 150a86e786b113b40a4e37cf61711a25
+guid: 8eb0ad91bce197943baee259725f7114
 TextureImporter:
   fileIDToRecycleName:
-    21300000: LittleGirl 0
-    21300002: LittleGirl 1
+    21300000: PaintTrail 0
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -47,7 +46,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -62,29 +61,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 2
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 32
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: Standalone
-    maxTextureSize: 32
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: WebGL
-    maxTextureSize: 32
+    maxTextureSize: 4
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -97,41 +74,21 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: LittleGirl 0
+      name: PaintTrail 0
       rect:
         serializedVersion: 2
         x: 0
-        y: 12
-        width: 16
-        height: 20
-      alignment: 7
+        y: 0
+        width: 4
+        height: 4
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bfd0719ac373f2d49af0ac6cd7181af7
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: LittleGirl 1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 12
-        width: 16
-        height: 20
-      alignment: 7
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a219c3225545198429b1119abe200d8a
+      spriteID: d5c5d1d15f85b14499caf82ff72a914b
       vertices: []
       indices: 
       edges: []
@@ -139,7 +96,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 7ed5e78b41adea040961b7c4c2db86b0
+    spriteID: 0e7891aa4615f6c43aa97102b286dbec
     vertices: []
     indices: 
     edges: []
