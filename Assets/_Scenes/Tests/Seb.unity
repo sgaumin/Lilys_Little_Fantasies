@@ -511,6 +511,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2309696615222579902, guid: 3434fa71ab6b7944e8f7912b7214e066,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2309696615222579901, guid: 3434fa71ab6b7944e8f7912b7214e066,
+        type: 3}
+      propertyPath: OnCrouchEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2309696615222579901, guid: 3434fa71ab6b7944e8f7912b7214e066,
+        type: 3}
+      propertyPath: OnCrouchEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2309696615222579901, guid: 3434fa71ab6b7944e8f7912b7214e066,
+        type: 3}
+      propertyPath: m_JumpForce
+      value: 820
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3434fa71ab6b7944e8f7912b7214e066, type: 3}
 --- !u!4 &612411771 stripped

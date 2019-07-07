@@ -23,9 +23,16 @@ public class PlayerMovement : MonoBehaviour
 			jump = true;
 			animator?.SetBool("IsJumping", true);
 		}
+
+		if (Input.GetButtonDown("Attack"))
+		{
+			animator?.SetTrigger("Attack");
+		}
 	}
 
 	public void OnLanding() => animator?.SetBool("IsJumping", false);
+
+	public void Hitted() => animator?.SetTrigger("IsHitted");
 
 	void FixedUpdate()
 	{
