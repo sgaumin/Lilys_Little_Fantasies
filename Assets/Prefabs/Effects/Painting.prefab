@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 6643969510034713445}
   - component: {fileID: 3986352793327052788}
   - component: {fileID: 5007922921833532418}
+  - component: {fileID: 6093990392917107129}
+  - component: {fileID: 6570961119680220139}
   m_Layer: 0
   m_Name: Painting
   m_TagString: Untagged
@@ -27,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2277355469723832928}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.934758, y: -0.52282965, z: -0.064453125}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -91,7 +93,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -119,3 +121,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c13ce8ddbc728e409703e0c1a31e322, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprite: {fileID: 6643969510034713445}
+  collider: {fileID: 3986352793327052788}
+  rigidbody2D: {fileID: 6093990392917107129}
+  force: 800
+  moving: {fileID: 6570961119680220139}
+--- !u!50 &6093990392917107129
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2277355469723832928}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
+--- !u!114 &6570961119680220139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2277355469723832928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d235e32f046e79b42bf514c70072cda0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDirection: 1
