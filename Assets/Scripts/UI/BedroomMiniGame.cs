@@ -29,11 +29,12 @@ public class BedroomMiniGame : MonoBehaviour
         
     }
 
-	public void Initialize( float sizePercent = 1 ,  float duration = 1  , Ease ease = Ease.Linear )
+	public void Initialize( float sizePercent = 1 , float animPercent = 10 ,  float duration = 1  , Ease ease = Ease.Linear )
 	{
 		animationDuration = duration;
 		animationEase = ease;
-		sequenceAnim = null; 
+		sequenceAnim = null;
+		aimMaxPercent = 10; 
 
 		if (rectTransform != null)
 		{

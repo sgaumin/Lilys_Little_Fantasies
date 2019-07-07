@@ -5,5 +5,7 @@
 	FlyingMoster,
 	CreepingMonster, 
 	StaticMonster ,
-	Smoke
+	Smoke, 
+	MiniGameButton ,
+	MiniGame
 }
