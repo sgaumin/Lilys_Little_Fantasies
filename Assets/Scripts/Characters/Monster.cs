@@ -2,8 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
-
+[RequireComponent(typeof(AudioSource))]
 public class Monster : MonoBehaviour
 {
 	[SerializeField] private float animationDuration = 2;
@@ -13,14 +14,22 @@ public class Monster : MonoBehaviour
 	[SerializeField] private int lifePoints;
 	[SerializeField] private Color colorDeath;
 
+	[Header("Sounds")]
+	[SerializeField] private AudioClip hitSound;
+	[SerializeField] private AudioClip deathSound;
+
+	private AudioSource audioSource;
 	private Sequence sequence = null;
+	private Collider2D[] collider2D;
 	private SpriteRenderer spriteRenderer;
 	private Vector3 startPos;
 	private int lifePointTemp;
 
 	void Start()
 	{
+		audioSource = GetComponent<AudioSource>();
 		spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+		collider2D = GetComponents<Collider2D>();
 
 		float durationQuarter = animationDuration / 4;
 		float halfDistance = maxMovingDistance / 2;
@@ -63,6 +72,7 @@ public class Monster : MonoBehaviour
 			sequence.Play();
 
 			lifePoints--;
+
 			if (lifePoints == 0)
 			{
 				GameObject flower = ResourceManager.Instance.GetObject(ObjectType.Flower);
@@ -77,7 +87,14 @@ public class Monster : MonoBehaviour
 				{
 					smoke.transform.position = transform.position;
 				}
-				Destroy(gameObject);
+
+				StartCoroutine(Death());
+			}
+			else
+			{
+				// Audio
+				audioSource.clip = hitSound;
+				audioSource.Play();
 			}
 		}
 
@@ -91,6 +108,22 @@ public class Monster : MonoBehaviour
 			rb?.AddForce(direction * forceAmount);
 			collider.GetComponent<PlayerMovement>().Hitted();
 		}
+	}
+
+	private IEnumerator Death()
+	{
+		// Audio
+		audioSource.clip = deathSound;
+		audioSource.Play();
+		spriteRenderer.enabled = false;
+		foreach (var collider in collider2D)
+		{
+			collider.enabled = false;
+		}
+
+		yield return new WaitForSeconds(1f);
+
+		Destroy(gameObject);
 	}
 
 	public void OnDestroy()
