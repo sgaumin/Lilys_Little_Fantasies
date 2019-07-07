@@ -9,16 +9,24 @@ public class Monster : MonoBehaviour
 	[SerializeField] private float animationDuration = 2;
 	[SerializeField] private float maxMovingDistance = 0;
 	[SerializeField] private MonsterType monsterType = MonsterType.Static;
+	[SerializeField] private float forceAmount;
+	[SerializeField] private int lifePoints;
+	[SerializeField] private Color colorDeath;
 
 	private Sequence sequence = null;
+	private SpriteRenderer spriteRenderer;
 	private Vector3 startPos;
+	private int lifePointTemp;
 
 	void Start()
 	{
+		spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
 		float durationQuarter = animationDuration / 4;
 		float halfDistance = maxMovingDistance / 2;
 
 		startPos = transform.localPosition;
+		lifePointTemp = lifePoints;
 
 		switch (monsterType)
 		{
@@ -48,25 +56,40 @@ public class Monster : MonoBehaviour
 
 	public void OnTriggerEnter2D(Collider2D collider)
 	{
-		Debug.Log(" Collision with monster");
-		if (collider.gameObject.CompareTag("Player")) // KJ : This is mock. You have to put the name of the brush/bullete
+		if (collider.CompareTag("Painting"))
 		{
-			if (monsterType != MonsterType.Vertical)
+			sequence = DOTween.Sequence();
+			sequence.Append(spriteRenderer.DOColor(colorDeath, 0.1f)).Append(spriteRenderer.DOColor(Color.white, 0.1f));
+			sequence.Play();
+
+			lifePoints--;
+			if (lifePoints == 0)
 			{
 				GameObject flower = ResourceManager.Instance.GetObject(ObjectType.Flower);
 				if (flower != null)
 				{
-					flower.transform.position = this.transform.position;
+					flower.transform.SetParent(transform.parent);
+					flower.transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, 0f);
 				}
-			}
 
-			GameObject smoke = ResourceManager.Instance.GetObject(ObjectType.Smoke);
-			if (smoke != null)
-			{
-				smoke.transform.position = this.transform.position;
+				GameObject smoke = ResourceManager.Instance.GetObject(ObjectType.Smoke);
+				if (smoke != null)
+				{
+					smoke.transform.position = transform.position;
+				}
+				Destroy(gameObject);
 			}
+		}
 
-			Object.Destroy(this.gameObject);
+		if (collider.CompareTag("Player"))
+		{
+			Rigidbody2D rb = collider.GetComponent<Rigidbody2D>();
+			bool pushOnLeft = (transform.position.x - collider.transform.position.x) > 0f;
+			Vector2 direction = pushOnLeft ? Vector2.left : Vector2.right;
+			direction += Vector2.up;
+
+			rb?.AddForce(direction * forceAmount);
+			collider.GetComponent<PlayerMovement>().Hitted();
 		}
 	}
 

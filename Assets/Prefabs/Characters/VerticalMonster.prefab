@@ -173,3 +173,6 @@ MonoBehaviour:
   animationDuration: 2
   maxMovingDistance: 1
   monsterType: 0
+  forceAmount: 300
+  lifePoints: 2
+  colorDeath: {r: 1, g: 0, b: 0.89411765, a: 1}

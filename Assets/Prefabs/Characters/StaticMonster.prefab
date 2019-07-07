@@ -221,4 +221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationDuration: 0
   maxMovingDistance: 0
-  mosnterType: 2
+  monsterType: 2
+  forceAmount: 500
+  lifePoints: 4
+  colorDeath: {r: 1, g: 0, b: 0.89411765, a: 1}
