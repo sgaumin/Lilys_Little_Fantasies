@@ -75,7 +75,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSanityLevel: 0.5
   timeByScene: 20
-  daysToFinish: 5
+  daysToFinish: 4
   endLightPrefab: {fileID: 3459438265815856977, guid: bdf87afbb1de69b45bf05532e41fd2ac,
     type: 3}
   lightSpawn: {fileID: 454941871309217784}
