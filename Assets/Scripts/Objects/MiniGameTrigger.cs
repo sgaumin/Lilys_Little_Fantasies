@@ -11,6 +11,10 @@ public class MiniGameTrigger : MonoBehaviour
 		PlayGame
 	}
 
+	[SerializeField] GameObject minigamePrefab = null; 
+	[SerializeField] GameObject buttonPrefab = null;
+
+
 	[SerializeField] MiniGameType miniGameType = MiniGameType.Book;
 	[SerializeField] Transform buttonPosition = null;
 	[SerializeField] Transform barPosition = null;
@@ -24,7 +28,9 @@ public class MiniGameTrigger : MonoBehaviour
 	{
 		if(collider.gameObject.CompareTag("Player"))
 		{
-			var buttonObject = ResourceManager.Instance.GetObject(ObjectType.MiniGameButton) ;
+			Debug.Log(" Colliding the " + miniGameType.ToString());
+			var buttonObject = GameObject.Instantiate(buttonPrefab); 
+
 			if (buttonObject != null)
 			{
 				miniGameButton = buttonObject.GetComponent<MiniGameButton>();
@@ -38,17 +44,21 @@ public class MiniGameTrigger : MonoBehaviour
 		}
 	}
 
-	public void OnTriggerExit(Collider other)
+	public void OnTriggerExit2D(Collider2D collider)
 	{
+		Debug.Log(" OnTriggerExit " + miniGameType.ToString());
 		if (miniGameButton != null)
 		{
 			miniGameButton.DestroyObject();
+			miniGameButton = null;
 		}
+
+		miniGameState = MiniGameState.None; 
 	}
 
 	private void Update()
 	{
-		if (Input.GetButtonDown("X"))
+		if (Input.GetButtonDown("BedroomTrigger"))
 		{
 			switch (miniGameState)
 			{
@@ -57,13 +67,17 @@ public class MiniGameTrigger : MonoBehaviour
 						if (miniGameButton != null)
 						{
 							miniGameButton.DestroyObject();
+							miniGameButton = null; 
 						}
 
-						var gameBar = ResourceManager.Instance.GetObject(ObjectType.MiniGame);
+						var gameBar = GameObject.Instantiate(minigamePrefab);
 						if (gameBar != null)
 						{
 							if (barPosition != null)
 								gameBar.transform.position = barPosition.position;
+
+							gameBar.transform.SetParent( HUD.Instance.transform) ;
+							gameBar.transform.localScale = Vector3.one; 
 
 							miniGameBar = gameBar.GetComponent<BedroomMiniGame>(); 
 
@@ -72,12 +86,12 @@ public class MiniGameTrigger : MonoBehaviour
 
 								case MiniGameType.Toy:
 									{
-										miniGameBar.Initialize( 1 , 10 , 1); 
+										miniGameBar.Initialize( 1 , 0.1f , 1); 
 									}
 									break;
 								case MiniGameType.Book:
 									{
-										miniGameBar.Initialize(2, 5, 1);
+										miniGameBar.Initialize(2, 0.05f, 1);
 									}
 									break;
 							}
@@ -96,6 +110,11 @@ public class MiniGameTrigger : MonoBehaviour
 							if( result )
 							{
 								// Do something to insanity bar
+								GameObject.Destroy(miniGameBar.gameObject);
+								miniGameBar = null; 
+
+								miniGameState = MiniGameState.None; 
+
 							}
 						}
 					}

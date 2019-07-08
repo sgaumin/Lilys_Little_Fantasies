@@ -6,28 +6,28 @@ using DG.Tweening;
 public class MiniGameButton : MonoBehaviour
 {
 	[SerializeField] private SpriteRenderer spriteRenderer = null;
-	[SerializeField] private float animatinoDuration = 1;
+	[SerializeField] private float animationDuration = 1;
 
-	private Tweener spriteAnimation = null; 
+	private Sequence sequence = null; 
 	
 	public void Initialize()
 	{
 		if(spriteRenderer != null )
 		{
-			Color color = spriteRenderer.color;
-			color.a = 0;
-			spriteRenderer.color = color;
+			sequence = DOTween.Sequence();
+			sequence.Append(transform.DOScale(1.3f, animationDuration).SetEase(Ease.Linear));
+			sequence.Append(transform.DOScale(1, animationDuration).SetEase(Ease.Linear));
+			sequence.SetLoops(-1);  
+			sequence.Play();
 
-			spriteAnimation = spriteRenderer.DOFade( 1 ,  animatinoDuration ).SetLoops( 8 , LoopType.Yoyo);
-			
 		}
 	}
 
 	public void DestroyObject()
 	{
-		if( spriteAnimation != null )
+		if(sequence != null )
 		{
-			spriteAnimation.Kill(); 
+			sequence.Kill(); 
 		}
 
 		GameObject.Destroy(this.gameObject); 

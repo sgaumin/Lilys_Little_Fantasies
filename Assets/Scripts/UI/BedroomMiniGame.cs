@@ -12,22 +12,22 @@ public class BedroomMiniGame : MonoBehaviour
 
 	[SerializeField] private float animationDuration = 1;
 	[SerializeField] private Ease animationEase = Ease.Linear;
-	[SerializeField] private float aimMaxPercent = 10;
+	[SerializeField] private float aimMaxPercent = 0.1f;
 
 	private Sequence sequenceAnim = null;
 	
     // Start is called before the first frame update
     void Start()
     {
-		Initialize( ); 
-
+	//	Initialize(); 
 	}
 
-	public void Initialize(float sizePercent = 1, float animPercent = 10, float duration = 1, Ease ease = Ease.Linear)
+	public void Initialize(float sizePercent = 1, float aimPercent = 0.1f, float duration = 1, Ease ease = Ease.Linear)
 	{
 		animationDuration = duration;
 		animationEase = ease;
-		sequenceAnim = null; 
+		sequenceAnim = null;
+		aimMaxPercent = aimPercent; 
 
 		if (rectTransform != null)
 		{
@@ -48,7 +48,7 @@ public class BedroomMiniGame : MonoBehaviour
 				sequenceAnim = DOTween.Sequence();
 				sequenceAnim.Append(target.DOLocalMoveX(target.localPosition.x + innerBoxRectTransform.rect.width, duration).SetEase(ease));
 				sequenceAnim.Append(target.DOLocalMoveX(target.localPosition.x , duration).SetEase(ease));
-				sequenceAnim.SetLoops(-1);
+				sequenceAnim.SetLoops(-1).Play();
 
 			}
 		}

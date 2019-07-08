@@ -167,7 +167,7 @@ MonoBehaviour:
   innerBoxRectTransform: {fileID: 773797814198977558}
   target: {fileID: 773797815125245194}
   animationDuration: 1
-  animationEase: 2
+  animationEase: 1
   aimMaxPercent: 0.1
 --- !u!1 &773797815125245195
 GameObject:
