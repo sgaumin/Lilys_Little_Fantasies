@@ -15,11 +15,12 @@ public class InsanityText : MonoBehaviour
 	{
 		DOTween.defaultAutoPlay = AutoPlay.None;
 		DOTween.defaultAutoKill = false;
-		Tween anim1 = text.DOColor(new Color(183 / 255f, 113 / 255f, 181 / 255f), 1.25f);
-		Tween anim2 = text.DOColor(Color.white, 0.3f);
+
+		Tween anim1 = text.DOColor(Color.clear, 0.5f);
+		Tween anim2 = text.DOColor(Color.white, 1f);
 		sequence1 = DOTween.Sequence();
 		sequence1.Append(anim1).Append(anim2).SetLoops(-1);
-		sequence1.PlayForward();
+		sequence1.Pause();
 
 		Tweener anim21 = text.DOColor(Color.red, 0.1f);
 		Tweener anim22 = text.DOColor(Color.white, 0.1f);
@@ -27,7 +28,7 @@ public class InsanityText : MonoBehaviour
 		animBarText.Append(anim21).Append(anim22).Insert(0f, text.transform.DOScale(1.2f, 0.2f)).Insert(0f, text.transform.DOScale(1f, 0.2f)).SetLoops(-1).Pause();
 	}
 
-	public void switchState(bool value)
+	public void SwitchState(bool value)
 	{
 		if (value)
 		{

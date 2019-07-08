@@ -367,7 +367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56e0605713ad424438e8a73688e998c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  durationBeforeNextDay: 3
+  durationBeforeNextDay: 2
 --- !u!114 &489724457
 MonoBehaviour:
   m_ObjectHideFlags: 0

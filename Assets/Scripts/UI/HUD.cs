@@ -53,14 +53,14 @@ public class HUD : MonoBehaviour
 			Debug.Log("GameOver Scene + return main Screen");
 		}
 
-		if (Sanity <= 0.25)
-		{
-			sanityText.switchState(false);
-		}
-		else
-		{
-			sanityText.switchState(true);
-		}
+		//if (Sanity <= 0.25)
+		//{
+		//	sanityText.SwitchState(false);
+		//}
+		//else
+		//{
+		//	sanityText.SwitchState(true);
+		//}
 
 		if (TimeInScene >= LevelManager.Instance.TimeByScene)
 		{
