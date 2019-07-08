@@ -15,6 +15,7 @@ public class HUD : MonoBehaviour
 
 	private Sequence timerSequence;
 	private Sequence animBarText;
+	private bool timeOut;
 
 	public float TimeInScene { get; private set; }
 
@@ -63,7 +64,19 @@ public class HUD : MonoBehaviour
 
 		if (TimeInScene >= LevelManager.Instance.TimeByScene)
 		{
-			LevelManager.Instance.GameSceneTransition();
+			if (!timeOut)
+			{
+				if (GameSystem.Instance.LevelType == LevelTypes.Nightmare)
+				{
+					LevelManager.Instance.SpawnNightmareLight();
+				}
+				else
+				{
+					LevelManager.Instance.GameSceneTransition();
+				}
+
+				timeOut = true;
+			}
 		}
 	}
 

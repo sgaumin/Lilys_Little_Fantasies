@@ -12,6 +12,10 @@ public class LevelManager : MonoBehaviour
 	[SerializeField] private float timeByScene;
 	[SerializeField] private int daysToFinish;
 
+	[Header("Nightmare")]
+	[SerializeField] private EndLight endLightPrefab;
+	[SerializeField] private Transform lightSpawn;
+
 	[Header("Controllers")]
 	[SerializeField] private AnimatorController bedroomAnimator;
 	[SerializeField] private AnimatorController nightmareAnimator;
@@ -50,7 +54,7 @@ public class LevelManager : MonoBehaviour
 		{
 			case LevelTypes.Nightmare:
 				GameData.Instance.NextDay();
- 				break;
+				break;
 			case LevelTypes.Bedroom:
 				LevelLoader.Instance.LoadNightmare();
 				break;
@@ -60,4 +64,6 @@ public class LevelManager : MonoBehaviour
 				break;
 		}
 	}
+
+	public void SpawnNightmareLight() => Instantiate(endLightPrefab, lightSpawn);
 }
