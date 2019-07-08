@@ -13,16 +13,21 @@ public class StartScreen : MonoBehaviour
 
 	private Sequence titleAnim;
 	private Sequence startAnim;
+	private Sequence bracketsAnim;
 	// Start is called before the first frame update
 	void Start()
     {
 		titleAnim = DOTween.Sequence().Append(title.transform.DOScale(1.2f, 1f)).Append(title.transform.DOScale(1f,1f)).SetLoops(-1).Play();
-		startAnim = DOTween.Sequence().Append(start.transform.DOScale(1.2f, 1f)).Append(start.transform.DOScale(1f, 1f)).SetLoops(-1).Play();
+		startAnim = DOTween.Sequence().Append(start.transform.DOScale(1.05f, 1f)).Append(start.transform.DOScale(1f, 1f)).SetLoops(-1).Play();
+		bracketsAnim = DOTween.Sequence().Append(bracket1.transform.DOLocalMoveX(-520, 0.3f)).Append(bracket1.transform.DOLocalMoveX(-500, 0.3f)).Append(bracket1.transform.DOLocalMoveX(-500, 0.3f)).Append(bracket2.transform.DOLocalMoveX(520, 0.3f)).Append(bracket2.transform.DOLocalMoveX(500, 0.3f)).SetLoops(-1);
 	}
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKey(KeyCode.Space))
+		{
+			Debug.Log("Load Intro Cinematic(scene) that will load the bedroom");
+		}
     }
 }
