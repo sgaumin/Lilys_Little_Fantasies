@@ -16,6 +16,7 @@ public class HUD : MonoBehaviour
 	private Sequence timerSequence;
 	private Sequence animBarText;
 	private bool timeOut;
+	private bool isWarning;
 
 	public float TimeInScene { get; private set; }
 
@@ -53,7 +54,13 @@ public class HUD : MonoBehaviour
 			Debug.Log("GameOver Scene + return main Screen");
 		}
 
-		//if (Sanity <= 0.25)
+		if (TimeInScene >= LevelManager.Instance.TimeByScene * 0.75f && !isWarning)
+		{
+			isWarning = true;
+			timerSequence.Play();
+		}
+
+		//if (Sanity <= 0.25)s
 		//{
 		//	sanityText.SwitchState(false);
 		//}
