@@ -27,7 +27,7 @@ public class StartScreen : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
 			GameData.Instance.InitializeData();
-			LevelLoader.Instance.LoadDayScene();
+			LevelLoader.Instance.LoadNextLevel();
 		}
 	}
 }
