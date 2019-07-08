@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -45,8 +46,19 @@ public class LevelLoader : MonoBehaviour
 		SceneManager.LoadScene(creditsScene);
 	}
 
-	public void LoadGameOver()
+	public void LoadGameOver(bool transition = true)
 	{
+		StartCoroutine(GameOver(transition));
+	}
+
+	private IEnumerator GameOver(bool transition)
+	{
+		if (transition)
+		{
+			Transition.Instance.FadOut();
+			yield return new WaitForSeconds(2f);
+		}
+
 		LevelClear();
 		SceneManager.LoadScene(gameOverScene);
 	}

@@ -33,9 +33,11 @@ public class LevelManager : MonoBehaviour
 		switch (GameSystem.Instance.LevelType)
 		{
 			case LevelTypes.Nightmare:
+				Transition.Instance.FadIn();
 				PlayerMovement.Instance.CurrentAnimatorController = nightmareAnimator;
 				break;
 			case LevelTypes.Bedroom:
+				Transition.Instance.FadIn();
 				PlayerMovement.Instance.CurrentAnimatorController = bedroomAnimator;
 				break;
 			case LevelTypes.Day:
@@ -53,10 +55,10 @@ public class LevelManager : MonoBehaviour
 		switch (GameSystem.Instance.LevelType)
 		{
 			case LevelTypes.Nightmare:
-				GameData.Instance.NextDay();
+				StartCoroutine(NightmareLoading());
 				break;
 			case LevelTypes.Bedroom:
-				LevelLoader.Instance.LoadNightmare();
+				StartCoroutine(BedroomLoading());
 				break;
 			case LevelTypes.Day:
 				break;
@@ -71,4 +73,18 @@ public class LevelManager : MonoBehaviour
 	}
 
 	public void SpawnNightmareLight() => Instantiate(endLightPrefab, lightSpawn);
+
+	private IEnumerator BedroomLoading()
+	{
+		Transition.Instance.FadOut();
+		yield return new WaitForSeconds(1f);
+		LevelLoader.Instance.LoadNightmare();
+	}
+
+	private IEnumerator NightmareLoading()
+	{
+		Transition.Instance.FadOutWhite();
+		yield return new WaitForSeconds(1f);
+		GameData.Instance.NextDay();
+	}
 }

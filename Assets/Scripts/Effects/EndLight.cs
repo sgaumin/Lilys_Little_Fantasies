@@ -13,8 +13,13 @@ public class EndLight : MonoBehaviour
 	Sequence sinus;
 	Sequence anim;
 
+	private AudioSource audioSource;
+	private bool alreadyContact;
+
 	void Start()
 	{
+		audioSource = GetComponent<AudioSource>();
+
 		sinusMovement = sprite.transform.DOLocalMoveY(-1.5f, 1f);
 		sinusMovement.SetEase(Ease.InOutSine);
 
@@ -43,8 +48,10 @@ public class EndLight : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.gameObject.CompareTag("Player"))
+		if (collision.gameObject.CompareTag("Player") && !alreadyContact)
 		{
+			alreadyContact = true;
+			audioSource.Play();
 			LevelManager.Instance.GameSceneTransition();
 		}
 

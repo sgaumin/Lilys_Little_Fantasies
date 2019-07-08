@@ -14,6 +14,7 @@ public class StartScreen : MonoBehaviour
 	private Sequence titleAnim;
 	private Sequence startAnim;
 	private Sequence bracketsAnim;
+	private bool isLoading;
 
 	protected void Start()
 	{
@@ -24,10 +25,20 @@ public class StartScreen : MonoBehaviour
 
 	protected void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.Space))
+		if (Input.GetKeyDown(KeyCode.Space) && !isLoading)
 		{
-			GameData.Instance.InitializeData();
-			LevelLoader.Instance.LoadNextLevel();
+			isLoading = true;
+			StartCoroutine(Load());
 		}
+	}
+
+	private IEnumerator Load()
+	{
+		Transition.Instance.FadOut();
+
+		yield return new WaitForSeconds(1f);
+
+		GameData.Instance.InitializeData();
+		LevelLoader.Instance.LoadNextLevel();
 	}
 }
