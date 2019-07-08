@@ -2001,7 +2001,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Lili's little Fantasies
+  m_text: Lily's little Fantasies
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 204932fd0f729a24483d6ca24a5a99da, type: 2}
   m_sharedMaterial: {fileID: 21710607334073186, guid: 204932fd0f729a24483d6ca24a5a99da,
