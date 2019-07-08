@@ -25,6 +25,7 @@ public class HUD : MonoBehaviour
 	protected void Start()
 	{
 		TimeInScene = 0;
+		Insanity = GameData.Instance.InsanityLevel;
 
 		Tween timerAnim1 = timerText.DOColor(Color.red, 0.1f);
 		Tween timerAnim2 = timerText.DOColor(Color.white, 0.1f);
@@ -35,8 +36,6 @@ public class HUD : MonoBehaviour
 			.SetLoops(-1);
 
 		timerSequence.Pause();
-
-		SetInsanity(0.5f);
 	}
 
 	protected void Update()

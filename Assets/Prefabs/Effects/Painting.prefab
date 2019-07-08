@@ -122,8 +122,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 6643969510034713445}
-  collider: {fileID: 3986352793327052788}
-  rigidbody2D: {fileID: 6093990392917107129}
+  boxCollider: {fileID: 3986352793327052788}
+  rb2D: {fileID: 6093990392917107129}
   force: 800
   moving: {fileID: 6570961119680220139}
 --- !u!50 &6093990392917107129
