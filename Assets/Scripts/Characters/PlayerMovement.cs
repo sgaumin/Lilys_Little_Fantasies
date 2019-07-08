@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
 	private float horizontalMove = 0f;
 	private bool jump = false;
 	private SpriteRenderer spriteRenderer;
+	private bool canMove = true ; 
 
 	public AnimatorController CurrentAnimatorController
 	{
@@ -50,6 +51,9 @@ public class PlayerMovement : MonoBehaviour
 
 	void Update()
 	{
+		if (!canMove)
+			return; 
+
 		horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 		animator?.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
@@ -114,5 +118,10 @@ public class PlayerMovement : MonoBehaviour
 		}
 
 		canAttack = true;
+	}
+
+	public void EnableMoving( bool enableMove)
+	{
+		canMove = enableMove; 
 	}
 }
