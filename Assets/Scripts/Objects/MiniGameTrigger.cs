@@ -96,6 +96,9 @@ public class MiniGameTrigger : MonoBehaviour
 									break;
 							}
 
+							PlayerMovement.Instance.EnableMoving(false);
+
+
 						}
 
 						miniGameState = MiniGameState.PlayGame;  
@@ -114,10 +117,11 @@ public class MiniGameTrigger : MonoBehaviour
 							}
 
 							GameObject.Destroy(miniGameBar.gameObject);
-							miniGameBar = null;
-
-							miniGameState = MiniGameState.None;
 						}
+
+						PlayerMovement.Instance.EnableMoving(true); 
+						miniGameBar = null;
+						miniGameState = MiniGameState.None;
 					}
 					break; 
 			}
