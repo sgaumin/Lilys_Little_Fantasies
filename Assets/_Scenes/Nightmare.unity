@@ -898,7 +898,7 @@ PrefabInstance:
     - target: {fileID: 1045690090394307700, guid: 82a703eb00e8077469490d25b8bc2bd2,
         type: 3}
       propertyPath: chunckSpeed
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82a703eb00e8077469490d25b8bc2bd2, type: 3}
