@@ -607,6 +607,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 716078325686762793, guid: 230a98eb8963bb14eb54b0ba05fb712e,
+        type: 3}
+      propertyPath: orthographic size
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 716078325686762966, guid: 230a98eb8963bb14eb54b0ba05fb712e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -661,11 +666,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 716078325686762793, guid: 230a98eb8963bb14eb54b0ba05fb712e,
-        type: 3}
-      propertyPath: orthographic size
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7699521136633836010, guid: 230a98eb8963bb14eb54b0ba05fb712e,
         type: 3}
@@ -923,11 +923,6 @@ PrefabInstance:
         type: 3}
       propertyPath: levelTypes
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5757387318137705855, guid: 91f77c7f45a95cc40a928615b549a427,
-        type: 3}
-      propertyPath: timeByScene
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91f77c7f45a95cc40a928615b549a427, type: 3}

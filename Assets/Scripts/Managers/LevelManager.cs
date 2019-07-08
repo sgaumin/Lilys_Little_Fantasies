@@ -65,5 +65,10 @@ public class LevelManager : MonoBehaviour
 		}
 	}
 
+	public void GameOver()
+	{
+		LevelLoader.Instance.LoadGameOver();
+	}
+
 	public void SpawnNightmareLight() => Instantiate(endLightPrefab, lightSpawn);
 }

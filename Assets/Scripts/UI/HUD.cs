@@ -80,5 +80,12 @@ public class HUD : MonoBehaviour
 		}
 	}
 
-	private void SetInsanity(float value) => sanityBar.DOValue(value, 0.5f).Play();
+	private void SetInsanity(float value)
+	{
+		sanityBar.DOValue(value, 0.5f).Play();
+		if (sanityBar.value <= 0f)
+		{
+			LevelManager.Instance.GameOver();
+		}
+	}
 }
