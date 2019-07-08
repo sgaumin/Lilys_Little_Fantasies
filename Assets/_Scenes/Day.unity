@@ -193,7 +193,7 @@ PrefabInstance:
         type: 3}
       propertyPath: musics.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: e3c63d1d3e7195141923d92598614ac5, type: 3}
+      objectReference: {fileID: 8300000, guid: 82739387ec8b5814ab7296ce192c48af, type: 3}
     - target: {fileID: 4425730198703570150, guid: 91f77c7f45a95cc40a928615b549a427,
         type: 3}
       propertyPath: Loop

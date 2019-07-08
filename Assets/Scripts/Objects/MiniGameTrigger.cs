@@ -22,6 +22,10 @@ public class MiniGameTrigger : MonoBehaviour
 
 	[SerializeField] float sanityPoints = 0.1f;
 
+	[Header("Audio")]
+	[SerializeField] private AudioClip miniGameSucceed;
+	[SerializeField] private AudioClip miniGameFailed;
+
 	private AudioSource audioSource;
 	private MiniGameButton miniGameButton = null;
 	private BedroomMiniGame miniGameBar = null;
@@ -116,12 +120,12 @@ public class MiniGameTrigger : MonoBehaviour
 							bool result = miniGameBar.GetResult();
 							if (result)
 							{
-								audioSource.pitch = 1f;
+								audioSource.clip = miniGameSucceed;
 								HUD.Instance.Sanity += sanityPoints;
 							}
 							else
 							{
-								audioSource.pitch = 0.5f;
+								audioSource.clip = miniGameFailed;
 							}
 
 							GameObject.Destroy(miniGameBar.gameObject);

@@ -55,8 +55,6 @@ public class BedroomMiniGame : MonoBehaviour
 			sequenceAnim.Kill();
 			sequenceAnim = null;
 		}
-
-		Debug.Log(GetResult().ToString());
 	}
 
 	public bool GetResult()
@@ -64,7 +62,6 @@ public class BedroomMiniGame : MonoBehaviour
 		float targetLastXPos = target.localPosition.x;
 		float aimDistance = aimMaxPercent * innerBoxRectTransform.rect.width / 2;
 
-		Debug.Log(targetLastXPos + "  " + aimDistance);
 		if (targetLastXPos > -aimDistance && targetLastXPos < aimDistance)
 			return true;
 
