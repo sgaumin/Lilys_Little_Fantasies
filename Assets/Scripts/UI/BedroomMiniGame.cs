@@ -1,33 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening; 
+using DG.Tweening;
 
 public class BedroomMiniGame : MonoBehaviour
 {
 
 	[SerializeField] private RectTransform rectTransform = null;
 	[SerializeField] private RectTransform innerBoxRectTransform = null;
-	[SerializeField] private Transform target = null; 
+	[SerializeField] private Transform target = null;
 
 	[SerializeField] private float animationDuration = 1;
 	[SerializeField] private Ease animationEase = Ease.Linear;
 	[SerializeField] private float aimMaxPercent = 0.1f;
 
 	private Sequence sequenceAnim = null;
-	
-    // Start is called before the first frame update
-    void Start()
-    {
-	//	Initialize(); 
-	}
 
 	public void Initialize(float sizePercent = 1, float aimPercent = 0.1f, float duration = 1, Ease ease = Ease.Linear)
 	{
 		animationDuration = duration;
 		animationEase = ease;
 		sequenceAnim = null;
-		aimMaxPercent = aimPercent; 
+		aimMaxPercent = aimPercent;
 
 		if (rectTransform != null)
 		{
@@ -35,36 +29,34 @@ public class BedroomMiniGame : MonoBehaviour
 			rectTransform.sizeDelta = new Vector2(width, rectTransform.rect.height);
 		}
 
-		if( innerBoxRectTransform != null )
+		if (innerBoxRectTransform != null)
 		{
-			float innerBoxHalfWidth = innerBoxRectTransform.rect.width / 2 ; 
-			if( target != null )
+			float innerBoxHalfWidth = innerBoxRectTransform.rect.width / 2;
+			if (target != null)
 			{
 				Vector3 position = target.localPosition;
 				//				position.x = UnityEngine.Random.Range(-innerBoxHalfWidth, innerBoxHalfWidth); 
-				position.x = -innerBoxHalfWidth; 
+				position.x = -innerBoxHalfWidth;
 				target.localPosition = position;
-				
+
 				sequenceAnim = DOTween.Sequence();
 				sequenceAnim.Append(target.DOLocalMoveX(target.localPosition.x + innerBoxRectTransform.rect.width, duration).SetEase(ease));
-				sequenceAnim.Append(target.DOLocalMoveX(target.localPosition.x , duration).SetEase(ease));
+				sequenceAnim.Append(target.DOLocalMoveX(target.localPosition.x, duration).SetEase(ease));
 				sequenceAnim.SetLoops(-1).Play();
 
 			}
 		}
-
-
 	}
 
 	public void Stop()
 	{
-		if(sequenceAnim != null)
+		if (sequenceAnim != null)
 		{
 			sequenceAnim.Kill();
-			sequenceAnim = null; 
+			sequenceAnim = null;
 		}
 
-		Debug.Log( GetResult().ToString()) ; 
+		Debug.Log(GetResult().ToString());
 	}
 
 	public bool GetResult()
@@ -76,6 +68,6 @@ public class BedroomMiniGame : MonoBehaviour
 		if (targetLastXPos > -aimDistance && targetLastXPos < aimDistance)
 			return true;
 
-		return false; 
+		return false;
 	}
 }

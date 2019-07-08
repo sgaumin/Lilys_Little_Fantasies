@@ -9,63 +9,51 @@ public class HUD : MonoBehaviour
 {
 	public static HUD Instance { get; private set; }
 
-	[SerializeField] private TextMeshProUGUI timer;
+	[SerializeField] private TextMeshProUGUI timerText;
 	[SerializeField] private Slider insanityBar;
 	[SerializeField] private InsanityText insanityText;
 
-	private float time;
 	private Sequence timerSequence;
 	private Sequence animBarText;
-	private bool timerWarning;
+
+	public float TimeInScene { get; private set; }
+
+	public float Insanity { get => insanityBar.value; set => SetInsanity(value); }
 
 	protected void Awake() => Instance = this;
 
 	protected void Start()
 	{
-		Tween timerAnim1 = timer.DOColor(Color.red, 0.1f);
-		Tween timerAnim2 = timer.DOColor(Color.white, 0.1f);
+		TimeInScene = 0;
+
+		Tween timerAnim1 = timerText.DOColor(Color.red, 0.1f);
+		Tween timerAnim2 = timerText.DOColor(Color.white, 0.1f);
 
 		timerSequence = DOTween.Sequence();
-		timerSequence.Append(timerAnim1).Append(timerAnim2).Insert(0f, timer.transform.DOScale(1.2f, 0.2f)).Insert(0f, timer.transform.DOScale(1f, 0.2f)).SetLoops(-1);
-		timerSequence.Pause();
-		timerWarning = false;
+		timerSequence.Append(timerAnim1).Append(timerAnim2).Insert(0f, timerText.transform.DOScale(1.2f, 0.2f))
+			.Insert(0f, timerText.transform.DOScale(1f, 0.2f))
+			.SetLoops(-1);
 
-		//TO ERASE
-		editInsanityBar(0.5f);
+		timerSequence.Pause();
+
+		SetInsanity(0.5f);
 	}
 
 	protected void Update()
 	{
-		time += Time.deltaTime;
+		TimeInScene += Time.deltaTime;
 
-		string minutes = Mathf.Floor(time / 60).ToString("00");
-		string seconds = Mathf.Floor(time % 60).ToString("00");
+		// Display Timer
+		string minutes = Mathf.Floor(TimeInScene / 60).ToString("00");
+		string seconds = Mathf.Floor(TimeInScene % 60).ToString("00");
+		timerText.text = minutes + ":" + seconds;
 
-		timer.text = minutes + ":" + seconds;
-
-
-		if (Mathf.Floor(time % 60) >= 5f && !timerWarning)
-		{
-			editInsanityBar(0.5f);
-		}
-		if (Mathf.Floor(time % 60) >= 8f && !timerWarning)
-		{
-			editInsanityBar(0.1f);
-		}
-		if (Mathf.Floor(time % 60) >= 10f && !timerWarning)
-		{
-			editInsanityBar(0.9f);
-		}
-		if (Mathf.Floor(time % 60) >= 45f && !timerWarning)
-		{
-			timerWarning = true;
-			timerSequence.Play();
-		}
-		if (insanityBar.value==0f)
+		if (Insanity == 0f)
 		{
 			Debug.Log("GameOver Scene + return main Screen");
 		}
-		if (insanityBar.value<=0.25)
+
+		if (Insanity <= 0.25)
 		{
 			insanityText.switchState(false);
 		}
@@ -73,10 +61,12 @@ public class HUD : MonoBehaviour
 		{
 			insanityText.switchState(true);
 		}
+
+		if (TimeInScene >= LevelManager.Instance.TimeByScene)
+		{
+			LevelManager.Instance.GameSceneTransition();
+		}
 	}
 
-	public void editInsanityBar(float value)
-	{
-		insanityBar.DOValue(value, 0.5f).Play();
-	}
+	private void SetInsanity(float value) => insanityBar.DOValue(value, 0.5f).Play();
 }

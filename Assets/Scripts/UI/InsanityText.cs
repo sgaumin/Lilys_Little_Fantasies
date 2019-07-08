@@ -7,11 +7,12 @@ using DG.Tweening;
 public class InsanityText : MonoBehaviour
 {
 	[SerializeField] private TextMeshProUGUI text;
+
 	Sequence sequence1;
 	Sequence animBarText;
-	// Start is called before the first frame update
+
 	void Start()
-    {
+	{
 		DOTween.defaultAutoPlay = AutoPlay.None;
 		DOTween.defaultAutoKill = false;
 		Tween anim1 = text.DOColor(new Color(183 / 255f, 113 / 255f, 181 / 255f), 1.25f);
@@ -25,12 +26,6 @@ public class InsanityText : MonoBehaviour
 		animBarText = DOTween.Sequence();
 		animBarText.Append(anim21).Append(anim22).Insert(0f, text.transform.DOScale(1.2f, 0.2f)).Insert(0f, text.transform.DOScale(1f, 0.2f)).SetLoops(-1).Pause();
 	}
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
 	public void switchState(bool value)
 	{
