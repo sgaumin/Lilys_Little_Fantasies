@@ -13,6 +13,7 @@ public class Monster : MonoBehaviour
 	[SerializeField] private float forceAmount;
 	[SerializeField] private int lifePoints;
 	[SerializeField] private Color colorDeath;
+	[SerializeField] private float insanityAmount = 0.04f;
 
 	[Header("Sounds")]
 	[SerializeField] private AudioClip hitSound;
@@ -107,6 +108,8 @@ public class Monster : MonoBehaviour
 
 			rb?.AddForce(direction * forceAmount);
 			collider.GetComponent<PlayerMovement>().Hitted();
+
+			HUD.Instance.Sanity -= insanityAmount;
 		}
 	}
 

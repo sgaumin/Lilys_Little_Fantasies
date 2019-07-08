@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Flower : MonoBehaviour
 {
+	[SerializeField] private float sanityAmount = .05f;
+
 	private AudioSource audioSource;
 	private SpriteRenderer spriteRenderer;
 
@@ -25,6 +27,8 @@ public class Flower : MonoBehaviour
 	{
 		audioSource.Play();
 		spriteRenderer.enabled = false;
+
+		HUD.Instance.Sanity += sanityAmount;
 
 		yield return new WaitForSeconds(2f);
 

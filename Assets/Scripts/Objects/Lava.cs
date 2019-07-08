@@ -6,6 +6,7 @@ public class Lava : MonoBehaviour
 {
 	[SerializeField] private float forceAmount;
 	[SerializeField] private float animSpeedDifference;
+	[SerializeField] private float insanityAmount = 0.05f;
 
 	private AudioSource audioSource;
 	private Animator anim;
@@ -26,6 +27,8 @@ public class Lava : MonoBehaviour
 
 			collision.GetComponent<PlayerMovement>().Hitted();
 			audioSource.Play();
+
+			HUD.Instance.Sanity -= insanityAmount;
 		}
 	}
 }
