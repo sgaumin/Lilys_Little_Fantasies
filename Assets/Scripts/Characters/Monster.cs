@@ -20,7 +20,7 @@ public class Monster : MonoBehaviour
 
 	private AudioSource audioSource;
 	private Sequence sequence = null;
-	private Collider2D[] collider2D;
+	private Collider2D[] colliders;
 	private SpriteRenderer spriteRenderer;
 	private Vector3 startPos;
 	private int lifePointTemp;
@@ -29,7 +29,7 @@ public class Monster : MonoBehaviour
 	{
 		audioSource = GetComponent<AudioSource>();
 		spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-		collider2D = GetComponents<Collider2D>();
+		colliders = GetComponents<Collider2D>();
 
 		float durationQuarter = animationDuration / 4;
 		float halfDistance = maxMovingDistance / 2;
@@ -116,7 +116,7 @@ public class Monster : MonoBehaviour
 		audioSource.clip = deathSound;
 		audioSource.Play();
 		spriteRenderer.enabled = false;
-		foreach (var collider in collider2D)
+		foreach (var collider in colliders)
 		{
 			collider.enabled = false;
 		}

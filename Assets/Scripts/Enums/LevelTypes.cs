@@ -1,5 +1,6 @@
 ﻿public enum LevelTypes
 {
 	Nightmare,
-	Bedroom
+	Bedroom,
+	Others
 }

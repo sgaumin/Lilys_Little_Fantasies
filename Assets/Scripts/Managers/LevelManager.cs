@@ -10,5 +10,15 @@ public class LevelManager : MonoBehaviour
 	[SerializeField] private AnimatorController nightmareAnimator;
 
 	private void Start()
-		=> PlayerMovement.Instance.CurrentAnimatorController = GameSystem.Instance.LevelType == LevelTypes.Nightmare ? nightmareAnimator : bedroomAnimator;
+	{
+		switch (GameSystem.Instance.LevelType)
+		{
+			case LevelTypes.Nightmare:
+				PlayerMovement.Instance.CurrentAnimatorController = nightmareAnimator;
+				break;
+			case LevelTypes.Bedroom:
+				PlayerMovement.Instance.CurrentAnimatorController = bedroomAnimator;
+				break;
+		}
+	}
 }

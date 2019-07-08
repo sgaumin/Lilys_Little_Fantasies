@@ -6,12 +6,12 @@ public class MiniGameTrigger : MonoBehaviour
 {
 	private enum MiniGameState
 	{
-		None , 
-		ShowButton , 
+		None,
+		ShowButton,
 		PlayGame
 	}
 
-	[SerializeField] GameObject minigamePrefab = null; 
+	[SerializeField] GameObject minigamePrefab = null;
 	[SerializeField] GameObject buttonPrefab = null;
 
 
@@ -20,16 +20,15 @@ public class MiniGameTrigger : MonoBehaviour
 	[SerializeField] Transform barPosition = null;
 
 	private MiniGameButton miniGameButton = null;
-	private BedroomMiniGame miniGameBar = null; 
+	private BedroomMiniGame miniGameBar = null;
 
-	private MiniGameState miniGameState = MiniGameState.None; 
+	private MiniGameState miniGameState = MiniGameState.None;
 
 	public void OnTriggerEnter2D(Collider2D collider)
 	{
-		if(collider.gameObject.CompareTag("Player"))
+		if (collider.gameObject.CompareTag("Player"))
 		{
-			Debug.Log(" Colliding the " + miniGameType.ToString());
-			var buttonObject = GameObject.Instantiate(buttonPrefab); 
+			var buttonObject = GameObject.Instantiate(buttonPrefab);
 
 			if (buttonObject != null)
 			{
@@ -39,21 +38,20 @@ public class MiniGameTrigger : MonoBehaviour
 				if (buttonPosition != null)
 					miniGameButton.transform.position = buttonPosition.position;
 
-				miniGameState = MiniGameState.ShowButton; 
+				miniGameState = MiniGameState.ShowButton;
 			}
 		}
 	}
 
 	public void OnTriggerExit2D(Collider2D collider)
 	{
-		Debug.Log(" OnTriggerExit " + miniGameType.ToString());
 		if (miniGameButton != null)
 		{
 			miniGameButton.DestroyObject();
 			miniGameButton = null;
 		}
 
-		miniGameState = MiniGameState.None; 
+		miniGameState = MiniGameState.None;
 	}
 
 	private void Update()
@@ -67,7 +65,7 @@ public class MiniGameTrigger : MonoBehaviour
 						if (miniGameButton != null)
 						{
 							miniGameButton.DestroyObject();
-							miniGameButton = null; 
+							miniGameButton = null;
 						}
 
 						var gameBar = GameObject.Instantiate(minigamePrefab);
@@ -76,17 +74,17 @@ public class MiniGameTrigger : MonoBehaviour
 							if (barPosition != null)
 								gameBar.transform.position = barPosition.position;
 
-							gameBar.transform.SetParent( HUD.Instance.transform) ;
-							gameBar.transform.localScale = Vector3.one; 
+							gameBar.transform.SetParent(HUD.Instance.transform);
+							gameBar.transform.localScale = Vector3.one;
 
-							miniGameBar = gameBar.GetComponent<BedroomMiniGame>(); 
+							miniGameBar = gameBar.GetComponent<BedroomMiniGame>();
 
 							switch (miniGameType)
 							{
 
 								case MiniGameType.Toy:
 									{
-										miniGameBar.Initialize( 1 , 0.1f , 1); 
+										miniGameBar.Initialize(1, 0.1f, 1);
 									}
 									break;
 								case MiniGameType.Book:
@@ -101,33 +99,33 @@ public class MiniGameTrigger : MonoBehaviour
 
 						}
 
-						miniGameState = MiniGameState.PlayGame;  
+						miniGameState = MiniGameState.PlayGame;
 					}
 					break;
 				case MiniGameState.PlayGame:
 					{
-						if( miniGameBar !=null )
+						if (miniGameBar != null)
 						{
 							miniGameBar.Stop();
-							bool result  = miniGameBar.GetResult(); 
-							if( result )
+							bool result = miniGameBar.GetResult();
+							if (result)
 							{
 								// Do something to insanity bar
-								
+
 							}
 
 							GameObject.Destroy(miniGameBar.gameObject);
 						}
 
-						PlayerMovement.Instance.EnableMoving(true); 
+						PlayerMovement.Instance.EnableMoving(true);
 						miniGameBar = null;
 						miniGameState = MiniGameState.None;
 					}
-					break; 
+					break;
 			}
 
-			
+
 		}
 	}
-	
+
 }
