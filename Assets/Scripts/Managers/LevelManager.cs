@@ -17,8 +17,8 @@ public class LevelManager : MonoBehaviour
 	[SerializeField] private Transform lightSpawn;
 
 	[Header("Controllers")]
-	[SerializeField] private AnimatorController bedroomAnimator;
-	[SerializeField] private AnimatorController nightmareAnimator;
+	[SerializeField] private RuntimeAnimatorController bedroomAnimator;
+	[SerializeField] private RuntimeAnimatorController nightmareAnimator;
 
 	public float TimeByScene => timeByScene;
 
@@ -34,11 +34,11 @@ public class LevelManager : MonoBehaviour
 		{
 			case LevelTypes.Nightmare:
 				Transition.Instance.FadIn();
-				PlayerMovement.Instance.CurrentAnimatorController = nightmareAnimator;
+				PlayerMovement.Instance.CurrentAnimatorController = nightmareAnimator as RuntimeAnimatorController;
 				break;
 			case LevelTypes.Bedroom:
 				Transition.Instance.FadIn();
-				PlayerMovement.Instance.CurrentAnimatorController = bedroomAnimator;
+				PlayerMovement.Instance.CurrentAnimatorController = bedroomAnimator as RuntimeAnimatorController;
 				break;
 			case LevelTypes.Day:
 				break;

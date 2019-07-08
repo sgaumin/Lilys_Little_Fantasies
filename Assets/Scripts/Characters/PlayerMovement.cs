@@ -1,7 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
+using UnityEngine.Animations;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
 	private SpriteRenderer spriteRenderer;
 	private bool canMove = true;
 
-	public AnimatorController CurrentAnimatorController
+	public RuntimeAnimatorController CurrentAnimatorController
 	{
 		set
 		{
