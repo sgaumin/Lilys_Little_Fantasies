@@ -4,9 +4,10 @@ using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour
 {
-	public const string menuScene = "Menu";
+	public const string startScene = "StartScreen";
 	public const string bedroomGameScene = "Bedroom";
 	public const string nightmareGameScene = "Nightmare";
+	public const string dayScene = "Day";
 	public const string creditsScene = "Credits";
 
 	public static LevelLoader Instance { get; private set; }
@@ -25,10 +26,16 @@ public class LevelLoader : MonoBehaviour
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 	}
 
-	public void LoadMenu()
+	public void LoadStartScene()
 	{
 		LevelClear();
-		SceneManager.LoadScene(menuScene);
+		SceneManager.LoadScene(startScene);
+	}
+
+	public void LoadDayScene()
+	{
+		LevelClear();
+		SceneManager.LoadScene(dayScene);
 	}
 
 	public void LoadCredits()

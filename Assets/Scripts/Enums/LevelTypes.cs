@@ -2,5 +2,6 @@
 {
 	Nightmare,
 	Bedroom,
+	Day,
 	Others
 }

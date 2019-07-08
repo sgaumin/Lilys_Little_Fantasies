@@ -74,6 +74,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startInsanityLevel: 0.5
   timeByScene: 10
+  daysToFinish: 5
   bedroomAnimator: {fileID: 9100000, guid: afd9afc0f69514644b56bf90236bfbdb, type: 2}
   nightmareAnimator: {fileID: 9100000, guid: 6c0783ed992772740a90a8ac8ee8094c, type: 2}
 --- !u!114 &5678630149009215646

@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/_Scenes/StartScreen.unity
     guid: b0c072dcd67cab14981793f5a86f92ff
   - enabled: 1
+    path: Assets/_Scenes/Day.unity
+    guid: f8090e00503a8f34093648e9240196e1
+  - enabled: 1
     path: Assets/_Scenes/Bedroom.unity
     guid: 5aff3c2a506dd7f44a55dd9aa2445bbe
   - enabled: 1

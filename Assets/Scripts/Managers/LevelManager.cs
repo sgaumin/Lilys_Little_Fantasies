@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour
 	[Header("Initialization")]
 	[SerializeField] private float startInsanityLevel;
 	[SerializeField] private float timeByScene;
+	[SerializeField] private int daysToFinish;
 
 	[Header("Controllers")]
 	[SerializeField] private AnimatorController bedroomAnimator;
@@ -18,6 +19,8 @@ public class LevelManager : MonoBehaviour
 	public float TimeByScene => timeByScene;
 
 	public float StartInsanityLevel => startInsanityLevel;
+
+	public int DaysToFinish => daysToFinish;
 
 	private void Awake() => Instance = this;
 
@@ -31,6 +34,10 @@ public class LevelManager : MonoBehaviour
 			case LevelTypes.Bedroom:
 				PlayerMovement.Instance.CurrentAnimatorController = bedroomAnimator;
 				break;
+			case LevelTypes.Day:
+				break;
+			case LevelTypes.Others:
+				break;
 		}
 	}
 
@@ -42,10 +49,14 @@ public class LevelManager : MonoBehaviour
 		switch (GameSystem.Instance.LevelType)
 		{
 			case LevelTypes.Nightmare:
-				LevelLoader.Instance.LoadBedroom();
+				GameData.Instance.NextDay();
 				break;
 			case LevelTypes.Bedroom:
 				LevelLoader.Instance.LoadNightmare();
+				break;
+			case LevelTypes.Day:
+				break;
+			case LevelTypes.Others:
 				break;
 		}
 	}

@@ -25,11 +25,22 @@ public class GameData : MonoBehaviour
 
 	public void InitializeData()
 	{
-		DayCount = 0;
+		DayCount = LevelManager.Instance.DaysToFinish;
 		InsanityLevel = LevelManager.Instance.StartInsanityLevel;
 	}
 
 	public void SaveData() => InsanityLevel = HUD.Instance.Insanity;
 
-	public void NextDay() => DayCount++;
+	public void NextDay()
+	{
+		DayCount--;
+		if (DayCount == 0)
+		{
+			LevelLoader.Instance.LoadStartScene();
+		}
+		else
+		{
+			LevelLoader.Instance.LoadDayScene();
+		}
+	}
 }
