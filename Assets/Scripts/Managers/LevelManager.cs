@@ -8,7 +8,7 @@ public class LevelManager : MonoBehaviour
 	public static LevelManager Instance { get; private set; }
 
 	[Header("Initialization")]
-	[SerializeField] private float startInsanityLevel;
+	[SerializeField] private float startSanityLevel;
 	[SerializeField] private float timeByScene;
 	[SerializeField] private int daysToFinish;
 
@@ -18,7 +18,7 @@ public class LevelManager : MonoBehaviour
 
 	public float TimeByScene => timeByScene;
 
-	public float StartInsanityLevel => startInsanityLevel;
+	public float StartInsanityLevel => startSanityLevel;
 
 	public int DaysToFinish => daysToFinish;
 
@@ -50,7 +50,7 @@ public class LevelManager : MonoBehaviour
 		{
 			case LevelTypes.Nightmare:
 				GameData.Instance.NextDay();
-				break;
+ 				break;
 			case LevelTypes.Bedroom:
 				LevelLoader.Instance.LoadNightmare();
 				break;

@@ -10,22 +10,22 @@ public class HUD : MonoBehaviour
 	public static HUD Instance { get; private set; }
 
 	[SerializeField] private TextMeshProUGUI timerText;
-	[SerializeField] private Slider insanityBar;
-	[SerializeField] private InsanityText insanityText;
+	[SerializeField] private Slider sanityBar;
+	[SerializeField] private InsanityText sanityText;
 
 	private Sequence timerSequence;
 	private Sequence animBarText;
 
 	public float TimeInScene { get; private set; }
 
-	public float Insanity { get => insanityBar.value; set => SetInsanity(value); }
+	public float Sanity { get => sanityBar.value; set => SetInsanity(value); }
 
 	protected void Awake() => Instance = this;
 
 	protected void Start()
 	{
 		TimeInScene = 0;
-		Insanity = GameData.Instance.InsanityLevel;
+		Sanity = GameData.Instance.SanityLevel;
 
 		Tween timerAnim1 = timerText.DOColor(Color.red, 0.1f);
 		Tween timerAnim2 = timerText.DOColor(Color.white, 0.1f);
@@ -47,18 +47,18 @@ public class HUD : MonoBehaviour
 		string seconds = Mathf.Floor(TimeInScene % 60).ToString("00");
 		timerText.text = minutes + ":" + seconds;
 
-		if (Insanity == 0f)
+		if (Sanity == 0f)
 		{
 			Debug.Log("GameOver Scene + return main Screen");
 		}
 
-		if (Insanity <= 0.25)
+		if (Sanity <= 0.25)
 		{
-			insanityText.switchState(false);
+			sanityText.switchState(false);
 		}
 		else
 		{
-			insanityText.switchState(true);
+			sanityText.switchState(true);
 		}
 
 		if (TimeInScene >= LevelManager.Instance.TimeByScene)
@@ -67,5 +67,5 @@ public class HUD : MonoBehaviour
 		}
 	}
 
-	private void SetInsanity(float value) => insanityBar.DOValue(value, 0.5f).Play();
+	private void SetInsanity(float value) => sanityBar.DOValue(value, 0.5f).Play();
 }

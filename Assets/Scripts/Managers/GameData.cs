@@ -8,7 +8,7 @@ public class GameData : MonoBehaviour
 
 	public int DayCount { get; private set; }
 
-	public float InsanityLevel { get; private set; }
+	public float SanityLevel { get; private set; }
 
 	private void Awake()
 	{
@@ -26,10 +26,10 @@ public class GameData : MonoBehaviour
 	public void InitializeData()
 	{
 		DayCount = LevelManager.Instance.DaysToFinish;
-		InsanityLevel = LevelManager.Instance.StartInsanityLevel;
+		SanityLevel = LevelManager.Instance.StartInsanityLevel;
 	}
 
-	public void SaveData() => InsanityLevel = HUD.Instance.Insanity;
+	public void SaveData() => SanityLevel = HUD.Instance.Sanity;
 
 	public void NextDay()
 	{

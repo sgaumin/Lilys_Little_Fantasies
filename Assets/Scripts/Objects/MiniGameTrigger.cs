@@ -19,6 +19,8 @@ public class MiniGameTrigger : MonoBehaviour
 	[SerializeField] Transform buttonPosition = null;
 	[SerializeField] Transform barPosition = null;
 
+	[SerializeField] float sanityPoints = 0.1f;
+
 	private MiniGameButton miniGameButton = null;
 	private BedroomMiniGame miniGameBar = null;
 
@@ -110,8 +112,7 @@ public class MiniGameTrigger : MonoBehaviour
 							bool result = miniGameBar.GetResult();
 							if (result)
 							{
-								// Do something to insanity bar
-
+								HUD.Instance.Sanity += sanityPoints;
 							}
 
 							GameObject.Destroy(miniGameBar.gameObject);

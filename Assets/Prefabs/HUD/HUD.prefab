@@ -388,7 +388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7169812, g: 0.44304025, b: 0.70900416, a: 1}
+  m_Color: {r: 0.38679248, g: 0.38679248, b: 0.38679248, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -580,7 +580,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Insanity Bar
+  m_text: Sanity Bar
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 204932fd0f729a24483d6ca24a5a99da, type: 2}
   m_sharedMaterial: {fileID: 21710607334073186, guid: 204932fd0f729a24483d6ca24a5a99da,
@@ -650,7 +650,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 4151909135435407542}
-    characterCount: 12
+    characterCount: 10
     spriteCount: 0
     spaceCount: 1
     wordCount: 2
@@ -884,7 +884,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.23584908, g: 0.23584908, b: 0.23584908, a: 1}
+  m_Color: {r: 0.7176471, g: 0.44313726, b: 0.70980394, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -985,7 +985,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.01
+  m_Value: 0.2
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1083,8 +1083,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 2819660783423851267}
-  insanityBar: {fileID: 9078058748647227948}
-  insanityText: {fileID: 2523293556986401857}
+  sanityBar: {fileID: 9078058748647227948}
+  sanityText: {fileID: 2523293556986401857}
 --- !u!1 &7953505571563168358
 GameObject:
   m_ObjectHideFlags: 0
