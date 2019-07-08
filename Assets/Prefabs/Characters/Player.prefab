@@ -141,13 +141,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1130ed566f4bdf49acc40a889adc25c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 40
+  runSpeed: 15
   particleSpawn: {fileID: 8089688854917850336}
   paintPrefab: {fileID: 5007922921833532418, guid: b8f55f58c8a985c49b827238a54f2e20,
     type: 3}
   maxNumberOfParticles: 10
   jumpSound: {fileID: 8300000, guid: 69a9cadcaf014934cb598c95e53c4f4b, type: 3}
   attackSound: {fileID: 8300000, guid: a0869a85a81676f40910b8ef8b68ccd1, type: 3}
+  walkSound: {fileID: 8300000, guid: 2632e30a194752c4ab2a672a0140f382, type: 3}
   hitSound:
   - {fileID: 8300000, guid: 3dda7a7c864d47c479a032152382257d, type: 3}
   - {fileID: 8300000, guid: c17eec8ecb8bc5349ad4810f4c0ce5fe, type: 3}

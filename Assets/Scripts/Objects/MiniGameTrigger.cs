@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class MiniGameTrigger : MonoBehaviour
 {
 	private enum MiniGameState
@@ -21,10 +22,13 @@ public class MiniGameTrigger : MonoBehaviour
 
 	[SerializeField] float sanityPoints = 0.1f;
 
+	private AudioSource audioSource;
 	private MiniGameButton miniGameButton = null;
 	private BedroomMiniGame miniGameBar = null;
 
 	private MiniGameState miniGameState = MiniGameState.None;
+
+	protected void Start() => audioSource = GetComponent<AudioSource>();
 
 	public void OnTriggerEnter2D(Collider2D collider)
 	{
@@ -112,15 +116,25 @@ public class MiniGameTrigger : MonoBehaviour
 							bool result = miniGameBar.GetResult();
 							if (result)
 							{
+								audioSource.pitch = 1f;
 								HUD.Instance.Sanity += sanityPoints;
+							}
+							else
+							{
+								audioSource.pitch = 0.5f;
 							}
 
 							GameObject.Destroy(miniGameBar.gameObject);
 						}
 
+						// Audio
+						audioSource.Play();
+
 						PlayerMovement.Instance.EnableMoving(true);
 						miniGameBar = null;
 						miniGameState = MiniGameState.None;
+
+
 					}
 					break;
 			}

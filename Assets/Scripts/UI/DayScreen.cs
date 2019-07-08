@@ -15,11 +15,11 @@ public class DayScreen : MonoBehaviour
 
 		if (GameData.Instance.DayCount > 1)
 		{
-			dayText.text = GameData.Instance.DayCount.ToString() + " days before";
+			dayText.text = GameData.Instance.DayCount.ToString() + " days before...";
 		}
 		else
 		{
-			dayText.text = GameData.Instance.DayCount.ToString() + " day before";
+			dayText.text = GameData.Instance.DayCount.ToString() + " day before...";
 		}
 
 		StartCoroutine(LoadNextDay());

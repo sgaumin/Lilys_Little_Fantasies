@@ -8,4 +8,9 @@ public class PlayerAbilities : MonoBehaviour
 	{
 		PlayerMovement.Instance.LaunchParticules();
 	}
+
+	public void Walk()
+	{
+		PlayerMovement.Instance.PlayFootSound();
+	}
 }

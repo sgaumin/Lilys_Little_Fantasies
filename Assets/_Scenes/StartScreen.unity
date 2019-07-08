@@ -1940,6 +1940,16 @@ PrefabInstance:
       propertyPath: levelTypes
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5678630149009215646, guid: 91f77c7f45a95cc40a928615b549a427,
+        type: 3}
+      propertyPath: musics.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5678630149009215646, guid: 91f77c7f45a95cc40a928615b549a427,
+        type: 3}
+      propertyPath: musics.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6695ec3de3242e94199ea92b0948c66a, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91f77c7f45a95cc40a928615b549a427, type: 3}
 --- !u!1 &2015195388

@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
 	[Header("Audio")]
 	[SerializeField] private AudioClip jumpSound;
 	[SerializeField] private AudioClip attackSound;
+	[SerializeField] private AudioClip walkSound;
 	[SerializeField] private AudioClip[] hitSound;
 
 	private AudioSource audioSource;
@@ -27,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
 	private float horizontalMove = 0f;
 	private bool jump = false;
 	private SpriteRenderer spriteRenderer;
-	private bool canMove = true ; 
+	private bool canMove = true;
 
 	public AnimatorController CurrentAnimatorController
 	{
@@ -52,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
 	void Update()
 	{
 		if (!canMove)
-			return; 
+			return;
 
 		horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 		animator?.SetFloat("Speed", Mathf.Abs(horizontalMove));
@@ -120,8 +121,15 @@ public class PlayerMovement : MonoBehaviour
 		canAttack = true;
 	}
 
-	public void EnableMoving( bool enableMove)
+	public void EnableMoving(bool enableMove)
 	{
-		canMove = enableMove; 
+		canMove = enableMove;
+	}
+
+	public void PlayFootSound()
+	{
+		//Audio
+		audioSource.clip = walkSound;
+		audioSource.Play();
 	}
 }
