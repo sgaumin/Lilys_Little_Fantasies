@@ -5,6 +5,7 @@
 ============
 - DOTween
 - TextMeshPro
+- AnimationImporter: https://github.com/talecrafter/AnimationImporter
 
 =============
 = Resources =
