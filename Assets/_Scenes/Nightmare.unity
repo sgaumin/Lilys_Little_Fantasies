@@ -919,6 +919,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8875076384926587128, guid: 91f77c7f45a95cc40a928615b549a427,
+        type: 3}
+      propertyPath: levelTypes
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5757387318137705855, guid: 91f77c7f45a95cc40a928615b549a427,
         type: 3}
       propertyPath: timeByScene

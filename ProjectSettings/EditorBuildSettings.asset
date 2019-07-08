@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Nightmare.unity
     guid: 5ad78aaa60790b5468550bcda97ee4ee
+  - enabled: 1
+    path: Assets/_Scenes/GameOver.unity
+    guid: fb5ae836e5ab6c942bdee7add6f6a19e
   m_configObjects: {}

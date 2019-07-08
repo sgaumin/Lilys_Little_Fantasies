@@ -36,7 +36,7 @@ public class GameData : MonoBehaviour
 		DayCount--;
 		if (DayCount == 0)
 		{
-			LevelLoader.Instance.LoadStartScene();
+			LevelLoader.Instance.LoadGameOver();
 		}
 		else
 		{

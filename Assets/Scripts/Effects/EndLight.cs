@@ -50,7 +50,7 @@ public class EndLight : MonoBehaviour
 
 		if (collision.gameObject.CompareTag("Generator"))
 		{
-			LevelLoader.Instance.LoadStartScene();
+			LevelLoader.Instance.LoadGameOver();
 		}
 	}
 }

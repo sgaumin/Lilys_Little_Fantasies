@@ -8,6 +8,7 @@ public class LevelLoader : MonoBehaviour
 	public const string bedroomGameScene = "Bedroom";
 	public const string nightmareGameScene = "Nightmare";
 	public const string dayScene = "Day";
+	public const string gameOverScene = "GameOver";
 	public const string creditsScene = "Credits";
 
 	public static LevelLoader Instance { get; private set; }
@@ -42,6 +43,12 @@ public class LevelLoader : MonoBehaviour
 	{
 		LevelClear();
 		SceneManager.LoadScene(creditsScene);
+	}
+
+	public void LoadGameOver()
+	{
+		LevelClear();
+		SceneManager.LoadScene(gameOverScene);
 	}
 
 	public void LoadBedroom()
