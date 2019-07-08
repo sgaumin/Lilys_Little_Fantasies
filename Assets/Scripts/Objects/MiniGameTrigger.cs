@@ -110,12 +110,13 @@ public class MiniGameTrigger : MonoBehaviour
 							if( result )
 							{
 								// Do something to insanity bar
-								GameObject.Destroy(miniGameBar.gameObject);
-								miniGameBar = null; 
-
-								miniGameState = MiniGameState.None; 
-
+								
 							}
+
+							GameObject.Destroy(miniGameBar.gameObject);
+							miniGameBar = null;
+
+							miniGameState = MiniGameState.None;
 						}
 					}
 					break; 
