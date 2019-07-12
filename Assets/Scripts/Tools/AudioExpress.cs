@@ -5,18 +5,26 @@ using Random = UnityEngine.Random;
 [Serializable]
 public class AudioExpress
 {
+	private enum AutoDestroyTypes
+	{
+		No,
+		AutoDestroyAfterDuration,
+		AutoDestroyAfterPlays
+	}
+
 	[SerializeField] private bool isUsingClips;
 	[SerializeField] private AudioClip clip;
 	[SerializeField] private AudioClip[] clips;
-	[SerializeField] private bool attached = true;
+
+	[SerializeField] private bool attached;
+
 	[SerializeField] private bool loop;
 	[SerializeField] private bool isPitchModified;
 	[SerializeField, Range(0f, 1f)] private float pitchMaxVariation = 0.3f;
+	[SerializeField] private bool isStayedWhenLoaddingScene;
 
-	// ==== TODO ====
-	// Play sound when scene finish - Add a DontDestroyOnLoad script
-	// Destroy after time - Creation of a script
-	// Create a pool of AudioSource or Stock them as a child of an empty object if not attached.
+	[SerializeField] private AutoDestroyTypes autoDestroy = AutoDestroyTypes.No;
+	[SerializeField, Range(0f, 10f)] private float multiplier = 5f;
 
 	public void Play(GameObject gameObject = null)
 	{
@@ -26,6 +34,11 @@ public class AudioExpress
 			gameObject.AddComponent<AudioSource>() :
 			new GameObject("Audio", typeof(AudioSource)).GetComponent<AudioSource>();
 
+		if (isStayedWhenLoaddingScene)
+		{
+			audioSource.gameObject.AddComponent<DontDestroyOnLoad>();
+		}
+
 		// Setup Paramaters
 		audioSource.clip = isUsingClips ? clips[Random.Range(0, clips.Length)] : clip;
 		audioSource.playOnAwake = false;
@@ -33,6 +46,17 @@ public class AudioExpress
 		if (isPitchModified)
 		{
 			audioSource.pitch -= Random.Range(0f, pitchMaxVariation);
+		}
+
+		// Auto Destroy
+		switch (autoDestroy)
+		{
+			case AutoDestroyTypes.AutoDestroyAfterDuration:
+				audioSource.gameObject.AddComponent<DestroyAfterLoad>().Initialize(multiplier);
+				break;
+			case AutoDestroyTypes.AutoDestroyAfterPlays:
+				audioSource.gameObject.AddComponent<DestroyAfterLoad>().Initialize(audioSource.clip.length * (multiplier - 1));
+				break;
 		}
 
 		// Play Sound
