@@ -11,7 +11,6 @@ public class LevelManager : MonoBehaviour
 	[SerializeField] private float startSanityLevel;
 	[SerializeField] private float timeByScene;
 	[SerializeField] private int daysToFinish;
-	[SerializeField] private AudioExpress jump;
 
 	[Header("Nightmare")]
 	[SerializeField] private EndLight endLightPrefab;
@@ -31,7 +30,6 @@ public class LevelManager : MonoBehaviour
 
 	private void Start()
 	{
-
 		switch (GameSystem.Instance.LevelType)
 		{
 			case LevelTypes.Nightmare:
