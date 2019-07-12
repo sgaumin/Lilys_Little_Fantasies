@@ -6,6 +6,8 @@ using UnityEngine;
 public class EndLight : MonoBehaviour
 {
 	[SerializeField] private SpriteRenderer sprite;
+	[SerializeField] private AudioExpress transition;
+
 	Tweener sinusMovement;
 	Tweener sinusMovement2;
 	Tweener sinusMovement3;
@@ -51,7 +53,7 @@ public class EndLight : MonoBehaviour
 		if (collision.gameObject.CompareTag("Player") && !alreadyContact)
 		{
 			alreadyContact = true;
-			audioSource.Play();
+			transition.Play();
 			LevelManager.Instance.GameSceneTransition();
 		}
 
