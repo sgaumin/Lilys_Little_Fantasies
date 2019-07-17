@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
 public class AudioManager : MonoBehaviour
@@ -12,7 +10,10 @@ public class AudioManager : MonoBehaviour
 	protected void Start()
 	{
 		audioSource = GetComponent<AudioSource>();
-		audioSource.clip = musics[Random.Range(0, musics.Length)];
-		audioSource.Play();
+		if (audioSource.enabled)
+		{
+			audioSource.clip = musics[Random.Range(0, musics.Length)];
+			audioSource.Play();
+		}
 	}
 }
