@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
 public class MiniGameTrigger : MonoBehaviour
@@ -12,15 +10,15 @@ public class MiniGameTrigger : MonoBehaviour
 		PlayGame
 	}
 
-	[SerializeField] GameObject minigamePrefab = null;
-	[SerializeField] GameObject buttonPrefab = null;
+	[SerializeField] private GameObject minigamePrefab = null;
+	[SerializeField] private GameObject buttonPrefab = null;
 
 
-	[SerializeField] MiniGameType miniGameType = MiniGameType.Book;
-	[SerializeField] Transform buttonPosition = null;
-	[SerializeField] Transform barPosition = null;
+	[SerializeField] private MiniGameType miniGameType = MiniGameType.Book;
+	[SerializeField] private Transform buttonPosition = null;
+	[SerializeField] private Transform barPosition = null;
 
-	[SerializeField] float sanityPoints = 0.1f;
+	[SerializeField] private float sanityPoints = 0.1f;
 
 	[Header("Audio")]
 	[SerializeField] private AudioClip miniGameSucceed;
@@ -38,7 +36,7 @@ public class MiniGameTrigger : MonoBehaviour
 	{
 		if (collider.gameObject.CompareTag("Player"))
 		{
-			var buttonObject = GameObject.Instantiate(buttonPrefab);
+			GameObject buttonObject = Instantiate(buttonPrefab);
 
 			if (buttonObject != null)
 			{
@@ -46,7 +44,9 @@ public class MiniGameTrigger : MonoBehaviour
 				miniGameButton?.Initialize();
 
 				if (buttonPosition != null)
+				{
 					miniGameButton.transform.position = buttonPosition.position;
+				}
 
 				miniGameState = MiniGameState.ShowButton;
 			}
@@ -78,11 +78,13 @@ public class MiniGameTrigger : MonoBehaviour
 							miniGameButton = null;
 						}
 
-						var gameBar = GameObject.Instantiate(minigamePrefab);
+						GameObject gameBar = Instantiate(minigamePrefab);
 						if (gameBar != null)
 						{
 							if (barPosition != null)
+							{
 								gameBar.transform.position = barPosition.position;
+							}
 
 							gameBar.transform.SetParent(HUD.Instance.transform);
 							gameBar.transform.localScale = Vector3.one;
@@ -91,7 +93,6 @@ public class MiniGameTrigger : MonoBehaviour
 
 							switch (miniGameType)
 							{
-
 								case MiniGameType.Toy:
 									{
 										miniGameBar.Initialize(1, 0.1f, 1);
@@ -105,8 +106,6 @@ public class MiniGameTrigger : MonoBehaviour
 							}
 
 							PlayerMovement.Instance.EnableMoving(false);
-
-
 						}
 
 						miniGameState = MiniGameState.PlayGame;
@@ -128,7 +127,7 @@ public class MiniGameTrigger : MonoBehaviour
 								audioSource.clip = miniGameFailed;
 							}
 
-							GameObject.Destroy(miniGameBar.gameObject);
+							Destroy(miniGameBar.gameObject);
 						}
 
 						// Audio
@@ -137,12 +136,10 @@ public class MiniGameTrigger : MonoBehaviour
 						PlayerMovement.Instance.EnableMoving(true);
 						miniGameBar = null;
 						miniGameState = MiniGameState.None;
-
-
 					}
+
 					break;
 			}
 		}
 	}
-
 }

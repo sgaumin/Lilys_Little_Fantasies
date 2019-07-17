@@ -1,7 +1,5 @@
 using DG.Tweening;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.Animations;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
@@ -50,10 +48,13 @@ public class PlayerMovement : MonoBehaviour
 		canAttack = true;
 	}
 
-	void Update()
+	private void Update()
 	{
 		if (!canMove)
+		{
+			animator?.SetFloat("Speed", 0f);
 			return;
+		}
 
 		horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 		animator?.SetFloat("Speed", Mathf.Abs(horizontalMove));
@@ -74,10 +75,7 @@ public class PlayerMovement : MonoBehaviour
 		}
 	}
 
-	public void LaunchParticules()
-	{
-		StartCoroutine(SpawnParticles());
-	}
+	public void LaunchParticules() => StartCoroutine(SpawnParticles());
 
 	public void OnLanding() => animator?.SetBool("IsJumping", false);
 
@@ -95,10 +93,13 @@ public class PlayerMovement : MonoBehaviour
 		Anim.Play();
 	}
 
-	void FixedUpdate()
+	private void FixedUpdate()
 	{
-		controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
-		jump = false;
+		if (canMove)
+		{
+			controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
+			jump = false;
+		}
 	}
 
 	private IEnumerator SpawnParticles()
@@ -123,6 +124,11 @@ public class PlayerMovement : MonoBehaviour
 
 	public void EnableMoving(bool enableMove)
 	{
+		if (!enableMove)
+		{
+			controller.StopMovement();
+		}
+
 		canMove = enableMove;
 	}
 
