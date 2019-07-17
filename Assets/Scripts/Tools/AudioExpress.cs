@@ -26,13 +26,17 @@ public class AudioExpress
 	[SerializeField] private AutoDestroyTypes autoDestroy = AutoDestroyTypes.No;
 	[SerializeField, Range(0f, 10f)] private float multiplier = 5f;
 
+	private AudioSource audioSource;
+
 	public void Play(GameObject gameObject = null)
 	{
 		// Initialization
-		AudioSource audioSource;
-		audioSource = attached ?
-			gameObject.AddComponent<AudioSource>() :
-			new GameObject("Audio", typeof(AudioSource)).GetComponent<AudioSource>();
+		if (audioSource == null)
+		{
+			audioSource = attached ?
+				gameObject.AddComponent<AudioSource>() :
+				new GameObject("Audio", typeof(AudioSource)).GetComponent<AudioSource>();
+		}
 
 		if (isStayedWhenLoaddingScene)
 		{
