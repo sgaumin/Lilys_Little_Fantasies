@@ -71,11 +71,10 @@ public class PlayerMovement : MonoBehaviour
 
 		if (Input.GetButtonDown("Attack") && GameSystem.Instance.LevelType == LevelTypes.Nightmare && canAttack)
 		{
+			canAttack = false;
 			animator?.SetTrigger("Attack");
 		}
 	}
-
-	public void LaunchParticules() => StartCoroutine(SpawnParticles());
 
 	public void OnLanding() => animator?.SetBool("IsJumping", false);
 
@@ -102,13 +101,15 @@ public class PlayerMovement : MonoBehaviour
 		}
 	}
 
+	public void LaunchParticules() => StartCoroutine(SpawnParticles());
+
+	public void ResetAttack() => canAttack = true;
+
 	private IEnumerator SpawnParticles()
 	{
 		//Audio
 		audioSource.clip = attackSound;
 		audioSource.Play();
-
-		canAttack = false;
 
 		int numberOfParticles = 1;
 		for (int i = 0; i < maxNumberOfParticles; i++)
@@ -119,7 +120,7 @@ public class PlayerMovement : MonoBehaviour
 			numberOfParticles++;
 		}
 
-		canAttack = true;
+		ResetAttack();
 	}
 
 	public void EnableMoving(bool enableMove)

@@ -1,16 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerAbilities : MonoBehaviour
 {
 	public void Attack()
 	{
-		PlayerMovement.Instance.LaunchParticules();
+		PlayerMovement.Instance?.LaunchParticules();
 	}
 
 	public void Walk()
 	{
-		PlayerMovement.Instance.PlayFootSound();
+		PlayerMovement.Instance?.PlayFootSound();
+	}
+
+	public void ResetStatus()
+	{
+		PlayerMovement.Instance?.ResetAttack();
 	}
 }
