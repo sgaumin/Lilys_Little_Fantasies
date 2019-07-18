@@ -1,6 +1,4 @@
 ﻿using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -49,25 +47,11 @@ public class HUD : MonoBehaviour
 		string seconds = Mathf.Floor(TimeInScene % 60).ToString("00");
 		timerText.text = minutes + ":" + seconds;
 
-		if (Sanity == 0f)
-		{
-			Debug.Log("GameOver Scene + return main Screen");
-		}
-
 		if (TimeInScene >= LevelManager.Instance.TimeByScene * 0.75f && !isWarning)
 		{
 			isWarning = true;
 			timerSequence.Play();
 		}
-
-		//if (Sanity <= 0.25)s
-		//{
-		//	sanityText.SwitchState(false);
-		//}
-		//else
-		//{
-		//	sanityText.SwitchState(true);
-		//}
 
 		if (TimeInScene >= LevelManager.Instance.TimeByScene)
 		{
