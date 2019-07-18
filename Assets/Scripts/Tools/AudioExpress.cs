@@ -28,10 +28,10 @@ public class AudioExpress
 
 	private AudioSource audioSource;
 
-	public void Play(GameObject gameObject = null)
+	public void Play(GameObject gameObject)
 	{
 		// Initialization
-		if (audioSource == null)
+		if (audioSource is null)
 		{
 			audioSource = attached ?
 				gameObject.AddComponent<AudioSource>() :
