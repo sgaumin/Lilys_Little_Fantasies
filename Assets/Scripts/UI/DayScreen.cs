@@ -13,13 +13,13 @@ public class DayScreen : MonoBehaviour
 	{
 		dayText = GetComponentInChildren<TextMeshProUGUI>();
 
-		if (GameData.Instance.DayCount > 1)
+		if (GameData.DayCount > 1)
 		{
-			dayText.text = GameData.Instance.DayCount.ToString() + " days before...";
+			dayText.text = GameData.DayCount.ToString() + " days before...";
 		}
 		else
 		{
-			dayText.text = GameData.Instance.DayCount.ToString() + " day before...";
+			dayText.text = GameData.DayCount.ToString() + " day before...";
 		}
 
 		StartCoroutine(LoadNextDay());

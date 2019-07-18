@@ -1,7 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Animations;
 
 public class LevelManager : MonoBehaviour
 {
@@ -40,17 +38,13 @@ public class LevelManager : MonoBehaviour
 				Transition.Instance.FadIn();
 				PlayerMovement.Instance.CurrentAnimatorController = bedroomAnimator as RuntimeAnimatorController;
 				break;
-			case LevelTypes.Day:
-				break;
-			case LevelTypes.Others:
-				break;
 		}
 	}
 
 	public void GameSceneTransition()
 	{
 		// We need to save game data from here
-		GameData.Instance.SaveData();
+		GameData.SaveData();
 
 		switch (GameSystem.Instance.LevelType)
 		{
@@ -59,10 +53,6 @@ public class LevelManager : MonoBehaviour
 				break;
 			case LevelTypes.Bedroom:
 				StartCoroutine(BedroomLoading());
-				break;
-			case LevelTypes.Day:
-				break;
-			case LevelTypes.Others:
 				break;
 		}
 	}
@@ -85,6 +75,6 @@ public class LevelManager : MonoBehaviour
 	{
 		Transition.Instance.FadOutWhite();
 		yield return new WaitForSeconds(1f);
-		GameData.Instance.NextDay();
+		GameData.NextDay();
 	}
 }

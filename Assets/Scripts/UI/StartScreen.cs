@@ -38,7 +38,7 @@ public class StartScreen : MonoBehaviour
 
 		yield return new WaitForSeconds(1f);
 
-		GameData.Instance.InitializeData();
+		GameData.InitializeData();
 		LevelLoader.Instance.LoadNextLevel();
 	}
 }

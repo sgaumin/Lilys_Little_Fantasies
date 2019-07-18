@@ -17,7 +17,7 @@ public class LevelGenerator : MonoBehaviour
 	protected void Awake() => Instance = this;
 
 	protected void Start()
-		=> ChunckSpeed = chunckSpeed + Mathf.Log(LevelManager.Instance.DaysToFinish - GameData.Instance.DayCount + 1, 2f) * difficultyFactor;
+		=> ChunckSpeed = chunckSpeed + Mathf.Log(LevelManager.Instance.DaysToFinish - GameData.DayCount + 1, 2f) * difficultyFactor;
 
 
 	public void Generate()
