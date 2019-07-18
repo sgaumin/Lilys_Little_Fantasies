@@ -105,7 +105,7 @@ public class Monster : MonoBehaviour
 	private IEnumerator Death()
 	{
 		// Audio
-		deathSound.Play();
+		deathSound.Play(gameObject);
 		spriteRenderer.enabled = false;
 		foreach (Collider2D collider in colliders)
 		{

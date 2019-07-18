@@ -181,12 +181,12 @@ MonoBehaviour:
     isUsingClips: 0
     clip: {fileID: 8300000, guid: 7be90f08ef78ef14c9064b22a0a754d0, type: 3}
     clips: []
-    attached: 0
+    attached: 1
     loop: 0
     isPitchModified: 1
     pitchMaxVariation: 0.3
     isStayedWhenLoaddingScene: 0
-    autoDestroy: 2
+    autoDestroy: 0
     multiplier: 2
   deathSound:
     isUsingClips: 0
