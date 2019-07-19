@@ -1,5 +1,4 @@
 ﻿using DG.Tweening;
-using System.Collections;
 using System.Linq;
 using UnityEngine;
 
@@ -17,8 +16,9 @@ public class Monster : MonoBehaviour
 	[SerializeField] private AudioExpress hitSound;
 	[SerializeField] private AudioExpress deathSound;
 
-	private Sequence sequence = null;
-	private Collider2D[] colliders;
+	private Sequence sequenceMovement;
+	private Sequence sequenceHit;
+
 	private SpriteRenderer spriteRenderer;
 	private Vector3 startPos;
 	private int lifePointTemp;
@@ -26,7 +26,6 @@ public class Monster : MonoBehaviour
 	private void Start()
 	{
 		spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-		colliders = GetComponents<Collider2D>();
 
 		float durationQuarter = animationDuration / 4;
 		float halfDistance = maxMovingDistance / 2;
@@ -38,23 +37,23 @@ public class Monster : MonoBehaviour
 		{
 			case MonsterType.Vertical:
 				{
-					sequence = DOTween.Sequence();
-					sequence.Append(transform.DOLocalMoveY(transform.position.y - halfDistance, durationQuarter).SetEase(Ease.Linear))
+					sequenceMovement = DOTween.Sequence();
+					sequenceMovement.Append(transform.DOLocalMoveY(transform.position.y - halfDistance, durationQuarter).SetEase(Ease.Linear))
 						.Append(transform.DOLocalMoveY(transform.position.y + halfDistance, durationQuarter * 2).SetEase(Ease.Linear))
 						.Append(transform.DOLocalMoveY(transform.position.y, durationQuarter).SetEase(Ease.Linear))
 						.SetLoops(-1);
-					sequence.Play();
+					sequenceMovement.Play();
 				}
 				break;
 			case MonsterType.Horizontal:
 				{
-					sequence = DOTween.Sequence();
-					sequence.Append(transform.DOLocalMoveX(startPos.x - halfDistance, durationQuarter).SetEase(Ease.Linear))
+					sequenceMovement = DOTween.Sequence();
+					sequenceMovement.Append(transform.DOLocalMoveX(startPos.x - halfDistance, durationQuarter).SetEase(Ease.Linear))
 						.Append(transform.DOLocalMoveX(startPos.x, durationQuarter).SetEase(Ease.Linear))
 						.Append(transform.DOLocalMoveX(startPos.x + halfDistance, durationQuarter).SetEase(Ease.Linear))
 						.Append(transform.DOLocalMoveX(startPos.x, durationQuarter).SetEase(Ease.Linear))
 						.SetLoops(-1);
-					sequence.Play();
+					sequenceMovement.Play();
 				}
 				break;
 		}
@@ -64,14 +63,13 @@ public class Monster : MonoBehaviour
 	{
 		if (collider.CompareTag("Painting"))
 		{
-			sequence = DOTween.Sequence();
-			sequence.Append(spriteRenderer.DOColor(colorDeath, 0.1f)).Append(spriteRenderer.DOColor(Color.white, 0.1f));
-			sequence.Play();
-
 			lifePoints--;
 
 			if (lifePoints == 0)
 			{
+				sequenceHit?.Kill();
+				sequenceMovement?.Kill();
+
 				GameObject flower = ResourceManager.Instance.GetObject(ObjectType.Flower);
 				if (flower != null)
 				{
@@ -79,12 +77,19 @@ public class Monster : MonoBehaviour
 					flower.transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, 0f);
 				}
 
-				StartCoroutine(Death());
+				// Audio
+				deathSound?.Play(gameObject);
+
+				Destroy(gameObject);
 			}
 			else
 			{
+				sequenceHit = DOTween.Sequence();
+				sequenceHit?.Append(spriteRenderer?.DOColor(colorDeath, 0.1f)).Append(spriteRenderer?.DOColor(Color.white, 0.1f));
+				sequenceHit?.Play();
+
 				// Audio
-				hitSound.Play(gameObject);
+				hitSound?.Play(gameObject);
 			}
 		}
 
@@ -102,27 +107,9 @@ public class Monster : MonoBehaviour
 		}
 	}
 
-	private IEnumerator Death()
-	{
-		// Audio
-		deathSound.Play(gameObject);
-		spriteRenderer.enabled = false;
-		foreach (Collider2D collider in colliders)
-		{
-			collider.enabled = false;
-		}
-
-		yield return new WaitForSeconds(1f);
-
-		Destroy(gameObject);
-	}
-
 	public void OnDestroy()
 	{
-		if (sequence != null)
-		{
-			sequence.Kill();
-			sequence = null;
-		}
+		sequenceHit?.Kill();
+		sequenceMovement?.Kill();
 	}
 }

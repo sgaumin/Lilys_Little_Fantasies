@@ -1,37 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Flower : MonoBehaviour
 {
 	[SerializeField] private float sanityAmount = .05f;
-
-	private AudioSource audioSource;
-	private SpriteRenderer spriteRenderer;
-
-	private void Start()
-	{
-		audioSource = GetComponent<AudioSource>();
-		spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-	}
+	[SerializeField] private AudioExpress collectSound;
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		if (collision.CompareTag("Player"))
 		{
-			StartCoroutine(Catch());
+			collectSound.Play(gameObject);
+			HUD.Instance.Sanity += sanityAmount;
+
+			Destroy(gameObject);
 		}
-	}
-
-	private IEnumerator Catch()
-	{
-		audioSource.Play();
-		spriteRenderer.enabled = false;
-
-		HUD.Instance.Sanity += sanityAmount;
-
-		yield return new WaitForSeconds(2f);
-
-		Destroy(gameObject);
 	}
 }

@@ -68,6 +68,6 @@ public class AudioExpress
 		}
 
 		// Play Sound
-		audioSource.Play();
+		audioSource?.Play();
 	}
 }
