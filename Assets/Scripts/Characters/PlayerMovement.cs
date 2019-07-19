@@ -78,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
 		isJumping = false;
 	}
 
-	public void Hitted()
+	public void Hitted(float value)
 	{
 		//Audio
 		audioSource.clip = hitSound[Random.Range(0, hitSound.Length)];
@@ -90,6 +90,9 @@ public class PlayerMovement : MonoBehaviour
 		Anim.Append(spriteRenderer.DOColor(Color.black, 0.08f)).Append(spriteRenderer.DOColor(Color.white, 0.08f))
 			.Append(spriteRenderer.DOColor(Color.black, 0.08f)).Append(spriteRenderer.DOColor(Color.white, 0.08f));
 		Anim.Play();
+
+		// Reduce HUD bar
+		HUD.Instance.Sanity -= value;
 	}
 
 	private void FixedUpdate()

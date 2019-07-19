@@ -101,9 +101,7 @@ public class Monster : MonoBehaviour
 			direction += Vector2.up;
 
 			rb?.AddForce(direction * forceAmount);
-			collider.GetComponent<PlayerMovement>().Hitted();
-
-			HUD.Instance.Sanity -= insanityAmount;
+			collider.GetComponent<PlayerMovement>().Hitted(insanityAmount);
 		}
 	}
 
