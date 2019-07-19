@@ -95,13 +95,11 @@ public class Monster : MonoBehaviour
 
 		if (collider.CompareTag("Player"))
 		{
-			Rigidbody2D rb = collider.GetComponent<Rigidbody2D>();
 			bool pushOnLeft = (transform.position.x - collider.transform.position.x) > 0f;
 			Vector2 direction = pushOnLeft ? Vector2.left : Vector2.right;
 			direction += Vector2.up;
 
-			rb?.AddForce(direction * forceAmount);
-			collider.GetComponent<PlayerMovement>().Hitted(insanityAmount);
+			collider.GetComponent<PlayerMovement>().Hit(insanityAmount, direction * forceAmount);
 		}
 	}
 

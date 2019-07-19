@@ -20,10 +20,7 @@ public class Lava : MonoBehaviour
 	{
 		if (collision.CompareTag("Player"))
 		{
-			Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
-			rb?.AddForce(Vector2.up * forceAmount);
-
-			collision.GetComponent<PlayerMovement>().Hitted(insanityAmount);
+			collision.GetComponent<PlayerMovement>().Hit(insanityAmount, Vector2.up * forceAmount);
 			audioSource.Play();
 		}
 	}

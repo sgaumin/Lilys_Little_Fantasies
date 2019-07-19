@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] private AudioClip walkSound;
 	[SerializeField] private AudioClip[] hitSound;
 
+	private Rigidbody2D rb;
 	private AudioSource audioSource;
 	private bool canAttack;
 	private CharacterController2D controller;
@@ -40,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
 
 	protected void Start()
 	{
+		rb = GetComponent<Rigidbody2D>();
 		audioSource = GetComponent<AudioSource>();
 		controller = GetComponent<CharacterController2D>();
 		spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -78,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
 		isJumping = false;
 	}
 
-	public void Hitted(float value)
+	public void Hit(float value, Vector2 force)
 	{
 		//Audio
 		audioSource.clip = hitSound[Random.Range(0, hitSound.Length)];
@@ -90,6 +92,9 @@ public class PlayerMovement : MonoBehaviour
 		Anim.Append(spriteRenderer.DOColor(Color.black, 0.08f)).Append(spriteRenderer.DOColor(Color.white, 0.08f))
 			.Append(spriteRenderer.DOColor(Color.black, 0.08f)).Append(spriteRenderer.DOColor(Color.white, 0.08f));
 		Anim.Play();
+
+		// Add Force
+		rb.AddForce(force);
 
 		// Reduce HUD bar
 		HUD.Instance.Sanity -= value;

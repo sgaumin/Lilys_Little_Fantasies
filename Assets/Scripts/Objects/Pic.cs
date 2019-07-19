@@ -4,7 +4,7 @@
 public class Pic : MonoBehaviour
 {
 	[SerializeField] private BoxCollider2D trigger;
-	[SerializeField] private BoxCollider2D collider2D;
+	[SerializeField] private BoxCollider2D picCollider2D;
 	[SerializeField] private float dammage = 0.08f;
 
 	private bool isFalling;
@@ -40,14 +40,14 @@ public class Pic : MonoBehaviour
 	{
 		if (collision.gameObject.CompareTag("Player") && isFalling && !isBroken)
 		{
-			collision.gameObject.GetComponent<PlayerMovement>().Hitted(dammage);
+			collision.gameObject.GetComponent<PlayerMovement>().Hit(dammage, Vector2.zero);
 			Destroy(gameObject);
 		}
 
 		if (collision.gameObject.layer == LayerMask.NameToLayer("Ground") && isFalling)
 		{
 			anim.SetTrigger("Break");
-			collider2D.enabled = false;
+			picCollider2D.enabled = false;
 			rb.gravityScale = 0f;
 			isBroken = true;
 		}
