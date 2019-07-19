@@ -251,5 +251,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trigger: {fileID: 6713029685479096506}
-  collider2D: {fileID: 7533307972074162607}
+  picCollider2D: {fileID: 7533307972074162607}
   dammage: 0.08
