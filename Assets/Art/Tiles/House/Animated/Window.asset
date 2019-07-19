@@ -12,8 +12,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e570e393d744704aaec40674614ab33, type: 3}
   m_Name: Window
   m_EditorClassIdentifier: 
-  m_AnimatedSprites: []
-  m_MinSpeed: 1
-  m_MaxSpeed: 1
+  m_AnimatedSprites:
+  - {fileID: 21300000, guid: 99b61015517a0a54584050e5cef7dfaf, type: 3}
+  - {fileID: 21300002, guid: 99b61015517a0a54584050e5cef7dfaf, type: 3}
+  - {fileID: 21300004, guid: 99b61015517a0a54584050e5cef7dfaf, type: 3}
+  - {fileID: 21300006, guid: 99b61015517a0a54584050e5cef7dfaf, type: 3}
+  - {fileID: 21300008, guid: 99b61015517a0a54584050e5cef7dfaf, type: 3}
+  - {fileID: 21300010, guid: 99b61015517a0a54584050e5cef7dfaf, type: 3}
+  - {fileID: 21300012, guid: 99b61015517a0a54584050e5cef7dfaf, type: 3}
+  - {fileID: 21300014, guid: 99b61015517a0a54584050e5cef7dfaf, type: 3}
+  - {fileID: 21300016, guid: 99b61015517a0a54584050e5cef7dfaf, type: 3}
+  - {fileID: 21300018, guid: 99b61015517a0a54584050e5cef7dfaf, type: 3}
+  - {fileID: 21300020, guid: 99b61015517a0a54584050e5cef7dfaf, type: 3}
+  - {fileID: 21300022, guid: 99b61015517a0a54584050e5cef7dfaf, type: 3}
+  - {fileID: 21300024, guid: 99b61015517a0a54584050e5cef7dfaf, type: 3}
+  - {fileID: 21300026, guid: 99b61015517a0a54584050e5cef7dfaf, type: 3}
+  - {fileID: 21300030, guid: 99b61015517a0a54584050e5cef7dfaf, type: 3}
+  - {fileID: 21300030, guid: 99b61015517a0a54584050e5cef7dfaf, type: 3}
+  - {fileID: 21300032, guid: 99b61015517a0a54584050e5cef7dfaf, type: 3}
+  - {fileID: 21300034, guid: 99b61015517a0a54584050e5cef7dfaf, type: 3}
+  - {fileID: 21300036, guid: 99b61015517a0a54584050e5cef7dfaf, type: 3}
+  - {fileID: 21300038, guid: 99b61015517a0a54584050e5cef7dfaf, type: 3}
+  - {fileID: 21300040, guid: 99b61015517a0a54584050e5cef7dfaf, type: 3}
+  - {fileID: 21300042, guid: 99b61015517a0a54584050e5cef7dfaf, type: 3}
+  - {fileID: 21300044, guid: 99b61015517a0a54584050e5cef7dfaf, type: 3}
+  - {fileID: 21300046, guid: 99b61015517a0a54584050e5cef7dfaf, type: 3}
+  m_MinSpeed: 7
+  m_MaxSpeed: 7
   m_AnimationStartTime: 0
   m_TileColliderType: 0

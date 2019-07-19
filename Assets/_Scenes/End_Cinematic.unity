@@ -299,7 +299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 116e79519e862f241a9d674252b8c24a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  durationBeforeLoad: 32
+  durationBeforeLoad: 28
 --- !u!82 &209948014
 AudioSource:
   m_ObjectHideFlags: 0
@@ -552,7 +552,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 2197815295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
