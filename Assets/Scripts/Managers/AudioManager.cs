@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
 public class AudioManager : MonoBehaviour
@@ -13,6 +14,15 @@ public class AudioManager : MonoBehaviour
 		if (audioSource.enabled)
 		{
 			audioSource.clip = musics[Random.Range(0, musics.Length)];
+
+			if (GameSystem.Instance.LevelType == LevelTypes.Nightmare ||
+				GameSystem.Instance.LevelType == LevelTypes.Bedroom)
+			{
+				audioSource.time = 3f;
+				audioSource.volume = 0f;
+				audioSource.DOFade(1f, 1f).Play();
+			}
+
 			audioSource.Play();
 		}
 	}
