@@ -14,7 +14,6 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] private int maxNumberOfParticles = 10;
 
 	[Header("Audio")]
-	[SerializeField] private AudioClip jumpSound;
 	[SerializeField] private AudioClip attackSound;
 	[SerializeField] private AudioClip walkSound;
 	[SerializeField] private AudioClip[] hitSound;
@@ -24,9 +23,9 @@ public class PlayerMovement : MonoBehaviour
 	private CharacterController2D controller;
 	private Animator animator;
 	private float horizontalMove = 0f;
-	private bool jump = false;
+	private bool isJumping;
 	private SpriteRenderer spriteRenderer;
-	private bool canMove = true;
+	private bool canMove;
 
 	public RuntimeAnimatorController CurrentAnimatorController
 	{
@@ -45,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
 		controller = GetComponent<CharacterController2D>();
 		spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
+		canMove = true;
 		canAttack = true;
 	}
 
@@ -59,13 +59,9 @@ public class PlayerMovement : MonoBehaviour
 		horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 		animator?.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
-		if (Input.GetButtonDown("Jump"))
+		if (Input.GetButtonDown("Jump") && !isJumping)
 		{
-			//Audio
-			audioSource.clip = jumpSound;
-			audioSource.Play();
-
-			jump = true;
+			isJumping = true;
 			animator?.SetBool("IsJumping", true);
 		}
 
@@ -76,7 +72,11 @@ public class PlayerMovement : MonoBehaviour
 		}
 	}
 
-	public void OnLanding() => animator?.SetBool("IsJumping", false);
+	public void OnLanding()
+	{
+		animator?.SetBool("IsJumping", false);
+		isJumping = false;
+	}
 
 	public void Hitted()
 	{
@@ -96,8 +96,7 @@ public class PlayerMovement : MonoBehaviour
 	{
 		if (canMove)
 		{
-			controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
-			jump = false;
+			controller.Move(horizontalMove * Time.fixedDeltaTime, false, isJumping);
 		}
 	}
 

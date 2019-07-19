@@ -36,31 +36,35 @@ public class AudioExpress
 			audioSource = attached ?
 				gameObject.AddComponent<AudioSource>() :
 				new GameObject("Audio", typeof(AudioSource)).GetComponent<AudioSource>();
+
+			if (isStayedWhenLoaddingScene)
+			{
+				audioSource.gameObject.AddComponent<DontDestroyOnLoad>();
+			}
+
+			// Setup Paramaters
+			audioSource.clip = isUsingClips ? clips[Random.Range(0, clips.Length)] : clip;
+			audioSource.playOnAwake = false;
+			audioSource.loop = loop;
 		}
 
-		if (isStayedWhenLoaddingScene)
-		{
-			audioSource.gameObject.AddComponent<DontDestroyOnLoad>();
-		}
-
-		// Setup Paramaters
-		audioSource.clip = isUsingClips ? clips[Random.Range(0, clips.Length)] : clip;
-		audioSource.playOnAwake = false;
-		audioSource.loop = loop;
 		if (isPitchModified)
 		{
-			audioSource.pitch -= Random.Range(0f, pitchMaxVariation);
+			audioSource.pitch = 1f - Random.Range(0f, pitchMaxVariation);
 		}
 
 		// Auto Destroy
-		switch (autoDestroy)
+		if (!attached)
 		{
-			case AutoDestroyTypes.AutoDestroyAfterDuration:
-				audioSource.gameObject.AddComponent<DestroyAfterLoad>().Initialize(multiplier);
-				break;
-			case AutoDestroyTypes.AutoDestroyAfterPlays:
-				audioSource.gameObject.AddComponent<DestroyAfterLoad>().Initialize(audioSource.clip.length * (multiplier - 1));
-				break;
+			switch (autoDestroy)
+			{
+				case AutoDestroyTypes.AutoDestroyAfterDuration:
+					audioSource.gameObject.AddComponent<DestroyAfterLoad>().Initialize(multiplier);
+					break;
+				case AutoDestroyTypes.AutoDestroyAfterPlays:
+					audioSource.gameObject.AddComponent<DestroyAfterLoad>().Initialize(audioSource.clip.length * (multiplier - 1));
+					break;
+			}
 		}
 
 		// Play Sound

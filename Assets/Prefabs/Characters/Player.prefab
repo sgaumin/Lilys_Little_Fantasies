@@ -99,7 +99,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_JumpForce: 820
-  m_CrouchSpeed: 1
   m_MovementSmoothing: 0.05
   m_AirControl: 1
   m_WhatIsGround:
@@ -108,6 +107,17 @@ MonoBehaviour:
   m_GroundCheck: {fileID: 2309696616233477770}
   m_CeilingCheck: {fileID: 2309696617074063578}
   m_CrouchDisableCollider: {fileID: 2309696615222579903}
+  jumpSound:
+    isUsingClips: 0
+    clip: {fileID: 8300000, guid: 69a9cadcaf014934cb598c95e53c4f4b, type: 3}
+    clips: []
+    attached: 1
+    loop: 0
+    isPitchModified: 1
+    pitchMaxVariation: 0.2
+    isStayedWhenLoaddingScene: 0
+    autoDestroy: 0
+    multiplier: 5
   OnLandEvent:
     m_PersistentCalls:
       m_Calls:
@@ -123,11 +133,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnCrouchEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: CharacterController2D+BoolEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2309696615222579890
 MonoBehaviour:
@@ -146,7 +151,6 @@ MonoBehaviour:
   paintPrefab: {fileID: 5007922921833532418, guid: b8f55f58c8a985c49b827238a54f2e20,
     type: 3}
   maxNumberOfParticles: 10
-  jumpSound: {fileID: 8300000, guid: 69a9cadcaf014934cb598c95e53c4f4b, type: 3}
   attackSound: {fileID: 8300000, guid: a0869a85a81676f40910b8ef8b68ccd1, type: 3}
   walkSound: {fileID: 8300000, guid: 2632e30a194752c4ab2a672a0140f382, type: 3}
   hitSound:
