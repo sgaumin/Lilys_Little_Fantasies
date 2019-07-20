@@ -1,7 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class DayScreen : MonoBehaviour
 {
@@ -9,7 +8,7 @@ public class DayScreen : MonoBehaviour
 
 	private TextMeshProUGUI dayText;
 
-	void Start()
+	private void Start()
 	{
 		dayText = GetComponentInChildren<TextMeshProUGUI>();
 

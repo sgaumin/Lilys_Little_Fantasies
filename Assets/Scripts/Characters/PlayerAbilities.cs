@@ -2,18 +2,9 @@
 
 public class PlayerAbilities : MonoBehaviour
 {
-	public void Attack()
-	{
-		PlayerMovement.Instance?.LaunchParticules();
-	}
+	public void Attack() => PlayerMovement.Instance?.LaunchParticules();
 
-	public void Walk()
-	{
-		PlayerMovement.Instance?.PlayFootSound();
-	}
+	public void Walk() => PlayerMovement.Instance?.PlayFootSound();
 
-	public void ResetStatus()
-	{
-		PlayerMovement.Instance?.ResetAttack();
-	}
+	public void ResetStatus() => PlayerMovement.Instance?.ResetAttack();
 }

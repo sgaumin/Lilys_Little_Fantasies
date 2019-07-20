@@ -1,17 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using DG.Tweening;
 using TMPro;
 using UnityEngine;
-using DG.Tweening;
 
 public class InsanityText : MonoBehaviour
 {
 	[SerializeField] private TextMeshProUGUI text;
+	private Sequence sequence1;
+	private Sequence animBarText;
 
-	Sequence sequence1;
-	Sequence animBarText;
-
-	void Start()
+	private void Start()
 	{
 		DOTween.defaultAutoPlay = AutoPlay.None;
 		DOTween.defaultAutoKill = false;

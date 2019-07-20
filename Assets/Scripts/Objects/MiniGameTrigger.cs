@@ -13,7 +13,6 @@ public class MiniGameTrigger : MonoBehaviour
 	[SerializeField] private GameObject minigamePrefab = null;
 	[SerializeField] private GameObject buttonPrefab = null;
 
-
 	[SerializeField] private MiniGameType miniGameType = MiniGameType.Book;
 	[SerializeField] private Transform buttonPosition = null;
 	[SerializeField] private Transform barPosition = null;

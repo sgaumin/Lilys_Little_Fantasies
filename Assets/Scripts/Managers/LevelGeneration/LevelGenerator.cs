@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -10,7 +8,6 @@ public class LevelGenerator : MonoBehaviour
 	[SerializeField] private Transform spawn;
 	[SerializeField] private float chunckSpeed;
 	[SerializeField] private float difficultyFactor = 1.1f;
-
 
 	public float ChunckSpeed { get; private set; }
 

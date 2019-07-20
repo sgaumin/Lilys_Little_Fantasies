@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using DG.Tweening;
 using UnityEngine;
-using DG.Tweening;
 
 public class BedroomMiniGame : MonoBehaviour
 {
@@ -63,7 +61,9 @@ public class BedroomMiniGame : MonoBehaviour
 		float aimDistance = aimMaxPercent * innerBoxRectTransform.rect.width / 2;
 
 		if (targetLastXPos > -aimDistance && targetLastXPos < aimDistance)
+		{
 			return true;
+		}
 
 		return false;
 	}

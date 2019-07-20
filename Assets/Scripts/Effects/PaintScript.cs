@@ -1,18 +1,15 @@
 ﻿using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public class PaintScript : MonoBehaviour
 {
 	[SerializeField] private SpriteRenderer sprite;
 	[SerializeField] private BoxCollider2D boxCollider;
 	[SerializeField] private Rigidbody2D rb2D;
-	[SerializeField] float force;
-	[SerializeField] MovingInDirection moving;
+	[SerializeField] private float force;
+	[SerializeField] private MovingInDirection moving;
 
-	Tweener anim;
+	private Tweener anim;
 
 	protected void Start()
 	{
@@ -21,7 +18,7 @@ public class PaintScript : MonoBehaviour
 		anim.Play();
 	}
 
-	void OnTriggerEnter2D(Collider2D collider2D)
+	private void OnTriggerEnter2D(Collider2D collider2D)
 	{
 		if (collider2D.gameObject.layer == LayerMask.NameToLayer("Ground"))
 		{
@@ -38,8 +35,5 @@ public class PaintScript : MonoBehaviour
 		}
 	}
 
-	public void Launch(Vector2 direction)
-	{
-		rb2D.AddForce(direction * force);
-	}
+	public void Launch(Vector2 direction) => rb2D.AddForce(direction * force);
 }
