@@ -18,4 +18,12 @@ public class GameSystem : MonoBehaviour
 		DOTween.defaultAutoPlay = AutoPlay.None;
 		DOTween.defaultAutoKill = false;
 	}
+
+	protected void Update()
+	{
+		if (Input.GetButtonDown("Quit"))
+		{
+			LevelLoader.Instance.QuitGame();
+		}
+	}
 }
