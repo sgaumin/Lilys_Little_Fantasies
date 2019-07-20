@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour
 {
-	public const string startScene = "StartScreen";
-	public const string bedroomGameScene = "Bedroom";
-	public const string nightmareGameScene = "Nightmare";
-	public const string dayScene = "Day";
-	public const string gameOverScene = "GameOver";
+	public const string startScene = "1-StartScreen";
+	public const string dayScene = "3-Day";
+	public const string bedroomGameScene = "4-Bedroom";
+	public const string nightmareGameScene = "5-Nightmare";
+	public const string gameOverScene = "7-GameOver";
 	public const string creditsScene = "Credits";
 
 	public static LevelLoader Instance { get; private set; }

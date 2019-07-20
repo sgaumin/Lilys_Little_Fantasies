@@ -108,7 +108,7 @@ public class CharacterController2D : MonoBehaviour
 
 	private void Flip()
 	{
-		if (GameSystem.Instance.LevelType != LevelTypes.Nightmare)
+		if (LevelManager.Instance.LevelType != LevelTypes.Nightmare)
 		{
 			// Switch the way the player is labelled as facing.
 			m_FacingRight = !m_FacingRight;

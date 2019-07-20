@@ -15,8 +15,8 @@ public class AudioManager : MonoBehaviour
 		{
 			audioSource.clip = musics[Random.Range(0, musics.Length)];
 
-			if (GameSystem.Instance.LevelType == LevelTypes.Nightmare ||
-				GameSystem.Instance.LevelType == LevelTypes.Bedroom)
+			if (LevelManager.Instance.LevelType == LevelTypes.Nightmare ||
+				LevelManager.Instance.LevelType == LevelTypes.Bedroom)
 			{
 				audioSource.time = 3f;
 				audioSource.volume = 0f;

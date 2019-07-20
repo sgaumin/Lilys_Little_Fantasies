@@ -1790,6 +1790,11 @@ PrefabInstance:
       propertyPath: musics.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 6695ec3de3242e94199ea92b0948c66a, type: 3}
+    - target: {fileID: 5757387318137705855, guid: 91f77c7f45a95cc40a928615b549a427,
+        type: 3}
+      propertyPath: levelTypes
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91f77c7f45a95cc40a928615b549a427, type: 3}
 --- !u!1 &2015195388

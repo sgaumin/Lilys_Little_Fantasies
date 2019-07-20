@@ -217,7 +217,12 @@ PrefabInstance:
     - target: {fileID: 5757387318137705855, guid: 91f77c7f45a95cc40a928615b549a427,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5757387318137705855, guid: 91f77c7f45a95cc40a928615b549a427,
+        type: 3}
+      propertyPath: levelTypes
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4425730198703570150, guid: 91f77c7f45a95cc40a928615b549a427,
         type: 3}
@@ -552,7 +557,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 2197815295
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -620,11 +625,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:

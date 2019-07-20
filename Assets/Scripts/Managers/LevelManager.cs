@@ -5,6 +5,8 @@ public class LevelManager : MonoBehaviour
 {
 	public static LevelManager Instance { get; private set; }
 
+	[SerializeField] private LevelTypes levelTypes;
+
 	[Header("Initialization")]
 	[SerializeField] private float startSanityLevel;
 	[SerializeField] private float timeByScene;
@@ -18,6 +20,8 @@ public class LevelManager : MonoBehaviour
 	[SerializeField] private RuntimeAnimatorController bedroomAnimator;
 	[SerializeField] private RuntimeAnimatorController nightmareAnimator;
 
+	public LevelTypes LevelType { get => levelTypes; }
+
 	public float TimeByScene => timeByScene;
 
 	public float StartInsanityLevel => startSanityLevel;
@@ -28,7 +32,7 @@ public class LevelManager : MonoBehaviour
 
 	private void Start()
 	{
-		switch (GameSystem.Instance.LevelType)
+		switch (LevelType)
 		{
 			case LevelTypes.Nightmare:
 				Transition.Instance.FadIn();
@@ -46,7 +50,7 @@ public class LevelManager : MonoBehaviour
 		// We need to save game data from here
 		GameData.SaveData();
 
-		switch (GameSystem.Instance.LevelType)
+		switch (LevelType)
 		{
 			case LevelTypes.Nightmare:
 				StartCoroutine(NightmareLoading());

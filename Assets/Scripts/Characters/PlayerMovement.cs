@@ -67,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
 			animator?.SetBool("IsJumping", true);
 		}
 
-		if (Input.GetButtonDown("Attack") && GameSystem.Instance.LevelType == LevelTypes.Nightmare && canAttack)
+		if (Input.GetButtonDown("Attack") && LevelManager.Instance.LevelType == LevelTypes.Nightmare && canAttack)
 		{
 			canAttack = false;
 			animator?.SetTrigger("Attack");

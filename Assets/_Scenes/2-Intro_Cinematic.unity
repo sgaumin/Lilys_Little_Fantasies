@@ -647,11 +647,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
-    - target: {fileID: 716078325686762793, guid: 230a98eb8963bb14eb54b0ba05fb712e,
-        type: 3}
-      propertyPath: orthographic size
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 716078325686762966, guid: 230a98eb8963bb14eb54b0ba05fb712e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -706,6 +701,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 716078325686762793, guid: 230a98eb8963bb14eb54b0ba05fb712e,
+        type: 3}
+      propertyPath: orthographic size
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7699521136633836010, guid: 230a98eb8963bb14eb54b0ba05fb712e,
         type: 3}
@@ -997,6 +997,11 @@ PrefabInstance:
       propertyPath: levelTypes
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5757387318137705855, guid: 91f77c7f45a95cc40a928615b549a427,
+        type: 3}
+      propertyPath: levelTypes
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4425730198703570150, guid: 91f77c7f45a95cc40a928615b549a427,
         type: 3}
       propertyPath: m_Enabled
@@ -1017,6 +1022,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 4319529282097731466}
+  transition:
+    isUsingClips: 0
+    clip: {fileID: 0}
+    clips: []
+    attached: 0
+    loop: 0
+    isPitchModified: 0
+    pitchMaxVariation: 0.3
+    isStayedWhenLoaddingScene: 0
+    autoDestroy: 0
+    multiplier: 5
 --- !u!4 &4319529282097731461
 Transform:
   m_ObjectHideFlags: 0

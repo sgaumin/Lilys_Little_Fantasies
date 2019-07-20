@@ -267,7 +267,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 77.8
+  m_fontSize: 78.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -537,6 +537,11 @@ PrefabInstance:
       propertyPath: musics.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 28fb5538abc0178478a7bc104f75942e, type: 3}
+    - target: {fileID: 5757387318137705855, guid: 91f77c7f45a95cc40a928615b549a427,
+        type: 3}
+      propertyPath: levelTypes
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4425730198703570150, guid: 91f77c7f45a95cc40a928615b549a427,
         type: 3}
       propertyPath: m_audioClip

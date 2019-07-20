@@ -57,7 +57,7 @@ public class HUD : MonoBehaviour
 		{
 			if (!timeOut)
 			{
-				if (GameSystem.Instance.LevelType == LevelTypes.Nightmare)
+				if (LevelManager.Instance.LevelType == LevelTypes.Nightmare)
 				{
 					LevelManager.Instance.SpawnNightmareLight();
 				}
