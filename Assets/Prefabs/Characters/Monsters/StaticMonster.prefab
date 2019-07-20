@@ -206,7 +206,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 4
+  m_Constraints: 5
 --- !u!114 &8376808714518168865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,7 +221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationDuration: 0
   maxMovingDistance: 0
-  monsterType: 2
+  monsterMovement: 2
   forceAmount: 500
   lifePoints: 4
   colorDeath: {r: 1, g: 0, b: 0.89411765, a: 1}
