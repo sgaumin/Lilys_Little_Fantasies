@@ -9,6 +9,9 @@ public class PaintScript : MonoBehaviour
 	[SerializeField] private float force;
 	[SerializeField] private MovingInDirection moving;
 
+	[Header("Effects")]
+	[SerializeField] private ParticleSystem burstEffect;
+
 	private Tweener anim;
 
 	protected void Start()
@@ -26,6 +29,8 @@ public class PaintScript : MonoBehaviour
 			moving.enabled = true;
 			anim.Pause();
 			anim.Kill();
+
+			burstEffect.Play();
 		}
 
 		if (collider2D.gameObject.CompareTag("Destructor") || collider2D.gameObject.CompareTag("Lava"))
