@@ -1,6 +1,6 @@
-﻿public enum MonsterType
+﻿public enum MonsterMovementType
 {
 	Vertical,
 	Horizontal , 
-	Static
+	Static,
 }

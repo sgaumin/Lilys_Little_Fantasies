@@ -6,7 +6,7 @@ public class Monster : MonoBehaviour
 {
 	[SerializeField] private float animationDuration = 2;
 	[SerializeField] private float maxMovingDistance = 0;
-	[SerializeField] private MonsterType monsterType = MonsterType.Static;
+	[SerializeField] private MonsterMovementType monsterMovement = MonsterMovementType.Static;
 	[SerializeField] private float forceAmount;
 	[SerializeField] private int lifePoints;
 	[SerializeField] private Color colorDeath;
@@ -33,9 +33,9 @@ public class Monster : MonoBehaviour
 		startPos = transform.localPosition;
 		lifePointTemp = lifePoints;
 
-		switch (monsterType)
+		switch (monsterMovement)
 		{
-			case MonsterType.Vertical:
+			case MonsterMovementType.Vertical:
 				{
 					sequenceMovement = DOTween.Sequence();
 					sequenceMovement.Append(transform.DOLocalMoveY(transform.position.y - halfDistance, durationQuarter).SetEase(Ease.Linear))
@@ -45,7 +45,7 @@ public class Monster : MonoBehaviour
 					sequenceMovement.Play();
 				}
 				break;
-			case MonsterType.Horizontal:
+			case MonsterMovementType.Horizontal:
 				{
 					sequenceMovement = DOTween.Sequence();
 					sequenceMovement.Append(transform.DOLocalMoveX(startPos.x - halfDistance, durationQuarter).SetEase(Ease.Linear))

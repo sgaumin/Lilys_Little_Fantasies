@@ -46,3 +46,4 @@ MonoBehaviour:
   monsterPrefabs:
   - {fileID: 8376808714518168865, guid: bb1765b91b9bbac4ebd8ba3ce4f35743, type: 3}
   - {fileID: 8223984495887726295, guid: f815c4b41d719714ebe83a4d3182221d, type: 3}
+  - {fileID: 2005643258447967160, guid: 9099e16c0850d5f4db8534689ab18478, type: 3}
