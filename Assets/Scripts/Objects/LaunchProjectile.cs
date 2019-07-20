@@ -19,7 +19,9 @@ public class LaunchProjectile : MonoBehaviour
 
 			DealDamage projectileTemp = Instantiate(projectilePrefab, spawn);
 
-			Vector2 direction = (Vector2.up + Vector2.right * Random.Range(-1f, 1f)) * forceAmount;
+			float factor = Random.value > 0.5f ? Random.Range(0.5f, 1f) : -Random.Range(0.5f, 1f);
+
+			Vector2 direction = (Vector2.up + Vector2.right * factor) * forceAmount;
 
 			Rigidbody2D rb = projectileTemp.GetComponent<Rigidbody2D>();
 
