@@ -93,6 +93,9 @@ public class PlayerMovement : MonoBehaviour
 			.Append(spriteRenderer.DOColor(Color.black, 0.08f)).Append(spriteRenderer.DOColor(Color.white, 0.08f));
 		Anim.Play();
 
+		// Camera animation
+		LevelManager.Instance.ScreenShake();
+
 		// Add Force
 		rb.AddForce(force);
 

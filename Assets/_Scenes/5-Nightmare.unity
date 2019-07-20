@@ -712,46 +712,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 716078325686762793, guid: 230a98eb8963bb14eb54b0ba05fb712e,
-        type: 3}
-      propertyPath: orthographic size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7699521136633836010, guid: 230a98eb8963bb14eb54b0ba05fb712e,
-        type: 3}
-      propertyPath: m_RefResolutionX
-      value: 288
-      objectReference: {fileID: 0}
-    - target: {fileID: 7699521136633836010, guid: 230a98eb8963bb14eb54b0ba05fb712e,
-        type: 3}
-      propertyPath: m_RefResolutionY
-      value: 160
-      objectReference: {fileID: 0}
-    - target: {fileID: 7699521136633836010, guid: 230a98eb8963bb14eb54b0ba05fb712e,
-        type: 3}
-      propertyPath: m_PixelSnapping
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7699521136633836010, guid: 230a98eb8963bb14eb54b0ba05fb712e,
-        type: 3}
-      propertyPath: m_CropFrameX
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7699521136633836010, guid: 230a98eb8963bb14eb54b0ba05fb712e,
-        type: 3}
-      propertyPath: m_CropFrameY
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7699521136633836010, guid: 230a98eb8963bb14eb54b0ba05fb712e,
-        type: 3}
-      propertyPath: m_StretchFill
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7699521136633836010, guid: 230a98eb8963bb14eb54b0ba05fb712e,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 230a98eb8963bb14eb54b0ba05fb712e, type: 3}
 --- !u!1001 &1017507118832304716
@@ -903,35 +863,41 @@ PrefabInstance:
     - target: {fileID: 1928543462985435496, guid: 0863df4870aaf744ead653048b69083b,
         type: 3}
       propertyPath: m_AnimatedTiles.Array.data[0].second.m_AnimationSpeed
-      value: 0.68379086
+      value: 0.50317264
       objectReference: {fileID: 0}
     - target: {fileID: 1928543462985435496, guid: 0863df4870aaf744ead653048b69083b,
         type: 3}
       propertyPath: m_AnimatedTiles.Array.data[1].second.m_AnimationSpeed
-      value: 0.8815937
+      value: 0.960769
       objectReference: {fileID: 0}
     - target: {fileID: 1928543462985435496, guid: 0863df4870aaf744ead653048b69083b,
         type: 3}
       propertyPath: m_AnimatedTiles.Array.data[2].second.m_AnimationSpeed
-      value: 0.7975551
+      value: 0.43305412
       objectReference: {fileID: 0}
     - target: {fileID: 1928543462985435496, guid: 0863df4870aaf744ead653048b69083b,
         type: 3}
       propertyPath: m_AnimatedTiles.Array.data[3].second.m_AnimationSpeed
-      value: 0.8789486
+      value: 0.7541863
       objectReference: {fileID: 0}
     - target: {fileID: 1928543462985435496, guid: 0863df4870aaf744ead653048b69083b,
         type: 3}
       propertyPath: m_AnimatedTiles.Array.data[4].second.m_AnimationSpeed
-      value: 0.5725895
+      value: 0.7107858
       objectReference: {fileID: 0}
     - target: {fileID: 1928543462985435496, guid: 0863df4870aaf744ead653048b69083b,
         type: 3}
       propertyPath: m_AnimatedTiles.Array.data[5].second.m_AnimationSpeed
-      value: 0.5314166
+      value: 0.6373611
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0863df4870aaf744ead653048b69083b, type: 3}
+--- !u!95 &2954694277045719341 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2954694277045719341, guid: 230a98eb8963bb14eb54b0ba05fb712e,
+    type: 3}
+  m_PrefabInstance: {fileID: 716078325371487574}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3502643509986546824
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1004,6 +970,16 @@ PrefabInstance:
       propertyPath: levelTypes
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5757387318137705855, guid: 91f77c7f45a95cc40a928615b549a427,
+        type: 3}
+      propertyPath: isDebug
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5757387318137705855, guid: 91f77c7f45a95cc40a928615b549a427,
+        type: 3}
+      propertyPath: cameraAnimator
+      value: 
+      objectReference: {fileID: 2954694277045719341}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91f77c7f45a95cc40a928615b549a427, type: 3}
 --- !u!1001 &8210589570245270066

@@ -23,6 +23,9 @@ public class LevelManager : MonoBehaviour
 	[SerializeField] private RuntimeAnimatorController bedroomAnimator;
 	[SerializeField] private RuntimeAnimatorController nightmareAnimator;
 
+	[Header("Camera")]
+	[SerializeField] private Animator cameraAnimator;
+
 	public LevelTypes LevelType { get => levelTypes; }
 
 	public float TimeByScene => timeByScene;
@@ -92,4 +95,6 @@ public class LevelManager : MonoBehaviour
 		yield return new WaitForSeconds(1f);
 		GameData.NextDay();
 	}
+
+	public void ScreenShake() => cameraAnimator.SetTrigger("Shake");
 }
