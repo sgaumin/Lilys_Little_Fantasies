@@ -7,6 +7,9 @@ public class LevelManager : MonoBehaviour
 
 	[SerializeField] private LevelTypes levelTypes;
 
+	[Header("Debug")]
+	[SerializeField] private bool isDebug;
+
 	[Header("Initialization")]
 	[SerializeField] private float startSanityLevel;
 	[SerializeField] private float timeByScene;
@@ -28,7 +31,15 @@ public class LevelManager : MonoBehaviour
 
 	public int DaysToFinish => daysToFinish;
 
-	private void Awake() => Instance = this;
+	private void Awake()
+	{
+		Instance = this;
+
+		if (isDebug)
+		{
+			GameData.InitializeData();
+		}
+	}
 
 	private void Start()
 	{
