@@ -78,7 +78,10 @@ public class Monster : MonoBehaviour
 				}
 
 				// Audio
-				deathSound?.Play(gameObject);
+				if (GameSystem.Instance.GameState == GameStates.Play)
+				{
+					deathSound?.Play(gameObject);
+				}
 
 				Destroy(gameObject);
 			}
@@ -89,7 +92,10 @@ public class Monster : MonoBehaviour
 				sequenceHit?.Play();
 
 				// Audio
-				hitSound?.Play(gameObject);
+				if (GameSystem.Instance.GameState == GameStates.Play)
+				{
+					hitSound?.Play(gameObject);
+				}
 			}
 		}
 

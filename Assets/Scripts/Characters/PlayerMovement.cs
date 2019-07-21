@@ -18,6 +18,10 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] private AudioClip walkSound;
 	[SerializeField] private AudioClip[] hitSound;
 
+	[Header("Freeze")]
+	[SerializeField, Range(0.01f, 1f)] private float freezeFactor = 0.3f;
+	[SerializeField, Range(0.01f, 1f)] private float freezeTime = 0.02f;
+
 	private Rigidbody2D rb;
 	private AudioSource audioSource;
 	private bool canAttack;
@@ -27,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
 	private bool isJumping;
 	private SpriteRenderer spriteRenderer;
 	private bool canMove;
+	private Coroutine freezeCoroutine;
 
 	public RuntimeAnimatorController CurrentAnimatorController
 	{
@@ -82,25 +87,36 @@ public class PlayerMovement : MonoBehaviour
 
 	public void Hit(float value, Vector2 force)
 	{
-		//Audio
-		audioSource.clip = hitSound[Random.Range(0, hitSound.Length)];
-		audioSource.Play();
+		if (GameSystem.Instance.GameState == GameStates.Play)
+		{
+			//Audio
+			audioSource.clip = hitSound[Random.Range(0, hitSound.Length)];
+			audioSource.Play();
 
-		animator?.SetTrigger("IsHitted");
+			animator?.SetTrigger("IsHitted");
 
-		Sequence Anim = DOTween.Sequence();
-		Anim.Append(spriteRenderer.DOColor(Color.black, 0.08f)).Append(spriteRenderer.DOColor(Color.white, 0.08f))
-			.Append(spriteRenderer.DOColor(Color.black, 0.08f)).Append(spriteRenderer.DOColor(Color.white, 0.08f));
-		Anim.Play();
+			// Animation
+			Sequence Anim = DOTween.Sequence();
+			Anim.Append(spriteRenderer.DOColor(Color.black, 0.08f)).Append(spriteRenderer.DOColor(Color.white, 0.08f))
+				.Append(spriteRenderer.DOColor(Color.black, 0.08f)).Append(spriteRenderer.DOColor(Color.white, 0.08f));
+			Anim.Play();
 
-		// Camera animation
-		LevelManager.Instance.ScreenShake();
+			// Freeze Time
+			if (freezeCoroutine != null)
+			{
+				StopCoroutine(freezeCoroutine);
+			}
+			freezeCoroutine = StartCoroutine(FreezeTime());
 
-		// Add Force
-		rb.AddForce(force);
+			// Camera animation
+			LevelManager.Instance.ScreenShake();
 
-		// Reduce HUD bar
-		HUD.Instance.Sanity -= value;
+			// Add Force
+			rb.AddForce(force);
+
+			// Reduce HUD bar
+			HUD.Instance.Sanity -= value;
+		}
 	}
 
 	private void FixedUpdate()
@@ -117,20 +133,23 @@ public class PlayerMovement : MonoBehaviour
 
 	private IEnumerator SpawnParticles()
 	{
-		//Audio
-		audioSource.clip = attackSound;
-		audioSource.Play();
-
-		int numberOfParticles = 1;
-		for (int i = 0; i < maxNumberOfParticles; i++)
+		if (GameSystem.Instance.GameState == GameStates.Play)
 		{
-			yield return new WaitForSeconds(0.02f);
-			PaintScript paint = Instantiate(paintPrefab, particleSpawn.position + new Vector3(0, 0.6f - 0.1f * numberOfParticles), Quaternion.identity);
-			paint.Launch(new Vector2(0.45f * Random.value * transform.localScale.x, 0.45f * Random.value));
-			numberOfParticles++;
-		}
+			//Audio
+			audioSource.clip = attackSound;
+			audioSource.Play();
 
-		ResetAttack();
+			int numberOfParticles = 1;
+			for (int i = 0; i < maxNumberOfParticles; i++)
+			{
+				yield return new WaitForSeconds(0.02f);
+				PaintScript paint = Instantiate(paintPrefab, particleSpawn.position + new Vector3(0, 0.6f - 0.1f * numberOfParticles), Quaternion.identity);
+				paint.Launch(new Vector2(0.45f * Random.value * transform.localScale.x, 0.45f * Random.value));
+				numberOfParticles++;
+			}
+
+			ResetAttack();
+		}
 	}
 
 	public void EnableMoving(bool enableMove)
@@ -148,5 +167,12 @@ public class PlayerMovement : MonoBehaviour
 		//Audio
 		audioSource.clip = walkSound;
 		audioSource.Play();
+	}
+
+	private IEnumerator FreezeTime()
+	{
+		Time.timeScale = freezeFactor;
+		yield return new WaitForSeconds(freezeTime);
+		Time.timeScale = 1f;
 	}
 }

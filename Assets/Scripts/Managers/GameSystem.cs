@@ -5,7 +5,7 @@ public class GameSystem : MonoBehaviour
 {
 	public static GameSystem Instance { get; private set; }
 
-	public GameStates GameState { get; private set; } = GameStates.Play;
+	public GameStates GameState { get; set; }
 
 	protected void Awake()
 	{
@@ -13,6 +13,9 @@ public class GameSystem : MonoBehaviour
 		DOTween.Init();
 		DOTween.defaultAutoPlay = AutoPlay.None;
 		DOTween.defaultAutoKill = false;
+
+		GameState = GameStates.Play;
+		Time.timeScale = 1f;
 	}
 
 	protected void Update()

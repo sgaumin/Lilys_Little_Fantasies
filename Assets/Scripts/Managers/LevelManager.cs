@@ -61,6 +61,8 @@ public class LevelManager : MonoBehaviour
 
 	public void GameSceneTransition()
 	{
+		GameSystem.Instance.GameState = GameStates.Transition;
+
 		// We need to save game data from here
 		GameData.SaveData();
 
@@ -92,7 +94,9 @@ public class LevelManager : MonoBehaviour
 	private IEnumerator NightmareLoading()
 	{
 		Transition.Instance.FadOutWhite();
-		yield return new WaitForSeconds(1f);
+		Time.timeScale = 0.5f;
+		yield return new WaitForSeconds(0.5f);
+		Time.timeScale = 1f;
 		GameData.NextDay();
 	}
 
