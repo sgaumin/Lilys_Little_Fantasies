@@ -34,6 +34,7 @@ public class StartScreen : MonoBehaviour
 	private IEnumerator Load()
 	{
 		Transition.Instance.FadOut();
+		AudioManager.Instance.FadeOutMusic();
 
 		yield return new WaitForSeconds(1f);
 

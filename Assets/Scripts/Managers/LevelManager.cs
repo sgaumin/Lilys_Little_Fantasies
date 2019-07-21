@@ -66,6 +66,8 @@ public class LevelManager : MonoBehaviour
 		// We need to save game data from here
 		GameData.SaveData();
 
+		AudioManager.Instance.FadeOutMusic();
+
 		switch (LevelType)
 		{
 			case LevelTypes.Nightmare:
@@ -77,12 +79,11 @@ public class LevelManager : MonoBehaviour
 		}
 	}
 
-	public void GameOver()
-	{
-		LevelLoader.Instance.LoadGameOver();
-	}
+	public void GameOver() => LevelLoader.Instance.LoadGameOver();
 
 	public void SpawnNightmareLight() => Instantiate(endLightPrefab, lightSpawn);
+
+	public void ScreenShake() => cameraAnimator.SetTrigger("Shake");
 
 	private IEnumerator BedroomLoading()
 	{
@@ -99,6 +100,4 @@ public class LevelManager : MonoBehaviour
 		Time.timeScale = 1f;
 		GameData.NextDay();
 	}
-
-	public void ScreenShake() => cameraAnimator.SetTrigger("Shake");
 }

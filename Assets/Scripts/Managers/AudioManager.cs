@@ -4,9 +4,13 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class AudioManager : MonoBehaviour
 {
+	public static AudioManager Instance { get; private set; }
+
 	[SerializeField] private AudioClip[] musics;
 
 	private AudioSource audioSource;
+
+	protected void Awake() => Instance = this;
 
 	protected void Start()
 	{
@@ -26,4 +30,6 @@ public class AudioManager : MonoBehaviour
 			audioSource.Play();
 		}
 	}
+
+	public void FadeOutMusic() => audioSource.DOFade(0f, 1f).Play();
 }
