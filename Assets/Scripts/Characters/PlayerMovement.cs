@@ -1,7 +1,5 @@
 using DG.Tweening;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.Animations;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
@@ -16,19 +14,24 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] private int maxNumberOfParticles = 10;
 
 	[Header("Audio")]
-	[SerializeField] private AudioClip jumpSound;
 	[SerializeField] private AudioClip attackSound;
 	[SerializeField] private AudioClip walkSound;
 	[SerializeField] private AudioClip[] hitSound;
 
+	[Header("Freeze")]
+	[SerializeField, Range(0.01f, 1f)] private float freezeFactor = 0.3f;
+	[SerializeField, Range(0.01f, 1f)] private float freezeTime = 0.02f;
+
+	private Rigidbody2D rb;
 	private AudioSource audioSource;
 	private bool canAttack;
 	private CharacterController2D controller;
 	private Animator animator;
 	private float horizontalMove = 0f;
-	private bool jump = false;
+	private bool isJumping;
 	private SpriteRenderer spriteRenderer;
-	private bool canMove = true;
+	private bool canMove;
+	private Coroutine freezeCoroutine;
 
 	public RuntimeAnimatorController CurrentAnimatorController
 	{
@@ -43,86 +46,119 @@ public class PlayerMovement : MonoBehaviour
 
 	protected void Start()
 	{
+		rb = GetComponent<Rigidbody2D>();
 		audioSource = GetComponent<AudioSource>();
 		controller = GetComponent<CharacterController2D>();
 		spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
+		canMove = true;
 		canAttack = true;
 	}
 
-	void Update()
+	private void Update()
 	{
 		if (!canMove)
+		{
+			animator?.SetFloat("Speed", 0f);
 			return;
+		}
 
 		horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 		animator?.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
-		if (Input.GetButtonDown("Jump"))
+		if (Input.GetButtonDown("Jump") && !isJumping)
 		{
-			//Audio
-			audioSource.clip = jumpSound;
-			audioSource.Play();
-
-			jump = true;
+			isJumping = true;
 			animator?.SetBool("IsJumping", true);
 		}
 
-		if (Input.GetButtonDown("Attack") && GameSystem.Instance.LevelType == LevelTypes.Nightmare && canAttack)
+		if (Input.GetButtonDown("Attack") && LevelManager.Instance.LevelType == LevelTypes.Nightmare && canAttack)
 		{
+			canAttack = false;
 			animator?.SetTrigger("Attack");
 		}
 	}
 
-	public void LaunchParticules()
+	public void OnLanding()
 	{
-		StartCoroutine(SpawnParticles());
+		animator?.SetBool("IsJumping", false);
+		isJumping = false;
 	}
 
-	public void OnLanding() => animator?.SetBool("IsJumping", false);
-
-	public void Hitted()
+	public void Hit(float value, Vector2 force)
 	{
-		//Audio
-		audioSource.clip = hitSound[Random.Range(0, hitSound.Length)];
-		audioSource.Play();
+		if (GameSystem.Instance.GameState == GameStates.Play)
+		{
+			//Audio
+			audioSource.clip = hitSound[Random.Range(0, hitSound.Length)];
+			audioSource.Play();
 
-		animator?.SetTrigger("IsHitted");
+			animator?.SetTrigger("IsHitted");
 
-		Sequence Anim = DOTween.Sequence();
-		Anim.Append(spriteRenderer.DOColor(Color.black, 0.08f)).Append(spriteRenderer.DOColor(Color.white, 0.08f))
-			.Append(spriteRenderer.DOColor(Color.black, 0.08f)).Append(spriteRenderer.DOColor(Color.white, 0.08f));
-		Anim.Play();
+			// Animation
+			Sequence Anim = DOTween.Sequence();
+			Anim.Append(spriteRenderer.DOColor(Color.black, 0.08f)).Append(spriteRenderer.DOColor(Color.white, 0.08f))
+				.Append(spriteRenderer.DOColor(Color.black, 0.08f)).Append(spriteRenderer.DOColor(Color.white, 0.08f));
+			Anim.Play();
+
+			// Freeze Time
+			if (freezeCoroutine != null)
+			{
+				StopCoroutine(freezeCoroutine);
+			}
+			freezeCoroutine = StartCoroutine(FreezeTime());
+
+			// Camera animation
+			LevelManager.Instance.ScreenShake();
+
+			// Add Force
+			rb.AddForce(force);
+
+			// Reduce HUD bar
+			HUD.Instance.Sanity -= value;
+		}
 	}
 
-	void FixedUpdate()
+	private void FixedUpdate()
 	{
-		controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
-		jump = false;
+		if (canMove)
+		{
+			controller.Move(horizontalMove * Time.fixedDeltaTime, false, isJumping);
+		}
 	}
+
+	public void LaunchParticules() => StartCoroutine(SpawnParticles());
+
+	public void ResetAttack() => canAttack = true;
 
 	private IEnumerator SpawnParticles()
 	{
-		//Audio
-		audioSource.clip = attackSound;
-		audioSource.Play();
-
-		canAttack = false;
-
-		int numberOfParticles = 1;
-		for (int i = 0; i < maxNumberOfParticles; i++)
+		if (GameSystem.Instance.GameState == GameStates.Play)
 		{
-			yield return new WaitForSeconds(0.02f);
-			PaintScript paint = Instantiate(paintPrefab, particleSpawn.position + new Vector3(0, 0.6f - 0.1f * numberOfParticles), Quaternion.identity);
-			paint.Launch(new Vector2(0.45f * Random.value * transform.localScale.x, 0.45f * Random.value));
-			numberOfParticles++;
-		}
+			//Audio
+			audioSource.clip = attackSound;
+			audioSource.Play();
 
-		canAttack = true;
+			int numberOfParticles = 1;
+			for (int i = 0; i < maxNumberOfParticles; i++)
+			{
+				yield return new WaitForSeconds(0.02f);
+				PaintScript paint = Instantiate(paintPrefab, particleSpawn.position + new Vector3(0, 0.6f - 0.1f * numberOfParticles), Quaternion.identity);
+				paint.Launch(new Vector2(0.45f * Random.value * transform.localScale.x, 0.45f * Random.value));
+				numberOfParticles++;
+			}
+
+			ResetAttack();
+		}
 	}
 
 	public void EnableMoving(bool enableMove)
 	{
+		if (!enableMove)
+		{
+			controller.StopMovement();
+		}
+
 		canMove = enableMove;
 	}
 
@@ -131,5 +167,12 @@ public class PlayerMovement : MonoBehaviour
 		//Audio
 		audioSource.clip = walkSound;
 		audioSource.Play();
+	}
+
+	private IEnumerator FreezeTime()
+	{
+		Time.timeScale = freezeFactor;
+		yield return new WaitForSeconds(freezeTime);
+		Time.timeScale = 1f;
 	}
 }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3235065907283270487}
   - component: {fileID: 5757387318137705855}
   - component: {fileID: 5678630149009215646}
+  - component: {fileID: 4775778621396377152}
   - component: {fileID: 4425730198703570150}
   m_Layer: 0
   m_Name: GameManager
@@ -48,7 +49,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8b78be85f58474e8e304b0e4ba63f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelTypes: 2
 --- !u!114 &3235065907283270487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,6 +73,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e104f2e1d4b4bea4bbd25132c6966e92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelTypes: 0
+  isDebug: 0
   startSanityLevel: 0.5
   timeByScene: 20
   daysToFinish: 4
@@ -81,6 +83,7 @@ MonoBehaviour:
   lightSpawn: {fileID: 454941871309217784}
   bedroomAnimator: {fileID: 9100000, guid: afd9afc0f69514644b56bf90236bfbdb, type: 2}
   nightmareAnimator: {fileID: 9100000, guid: 6c0783ed992772740a90a8ac8ee8094c, type: 2}
+  cameraAnimator: {fileID: 0}
 --- !u!114 &5678630149009215646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,6 +103,18 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5a09e493ae77af747a9bc53f6342ec9f, type: 3}
   - {fileID: 8300000, guid: 1ab0b3f8ede840b41825c57d6089dba8, type: 3}
   - {fileID: 8300000, guid: af079b7fda12a424cab4657241ac4fdf, type: 3}
+--- !u!114 &4775778621396377152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5781611409483811789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8964d8fecc60c434887dfe0851fa0948, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &4425730198703570150
 AudioSource:
   m_ObjectHideFlags: 0

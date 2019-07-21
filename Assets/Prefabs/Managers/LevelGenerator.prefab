@@ -46,6 +46,8 @@ MonoBehaviour:
   chuncks:
   - {fileID: 1485122137961177819, guid: 9ce400b1c19939544b407d47115a6267, type: 3}
   - {fileID: 2858917598712779037, guid: 0d7f1fe937ca4c64298b4fa67336858d, type: 3}
+  - {fileID: 1485122137961177819, guid: a9d88cc05e074864a87334e895f2e8de, type: 3}
+  - {fileID: 2858917598712779037, guid: 7be700f710f0a3d409ab1ecbc94364fd, type: 3}
   spawn: {fileID: 0}
   chunckSpeed: 4
   difficultyFactor: 1.15

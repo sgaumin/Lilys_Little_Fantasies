@@ -1,37 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class GameData : MonoBehaviour
+﻿public static class GameData
 {
-	public static GameData Instance { get; private set; }
+	public static int DayCount { get; private set; }
 
-	public int DayCount { get; private set; }
+	public static float SanityLevel { get; private set; }
 
-	public float SanityLevel { get; private set; }
-
-	private void Awake()
-	{
-		if (Instance == null)
-		{
-			Instance = this;
-			DontDestroyOnLoad(gameObject);
-		}
-		else
-		{
-			Destroy(gameObject);
-		}
-	}
-
-	public void InitializeData()
+	public static void InitializeData()
 	{
 		DayCount = LevelManager.Instance.DaysToFinish;
 		SanityLevel = LevelManager.Instance.StartInsanityLevel;
 	}
 
-	public void SaveData() => SanityLevel = HUD.Instance.Sanity;
+	public static void SaveData() => SanityLevel = HUD.Instance.Sanity;
 
-	public void NextDay()
+	public static void NextDay()
 	{
 		DayCount--;
 		if (DayCount == 0)

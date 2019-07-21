@@ -1,7 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class DayScreen : MonoBehaviour
 {
@@ -9,17 +8,17 @@ public class DayScreen : MonoBehaviour
 
 	private TextMeshProUGUI dayText;
 
-	void Start()
+	private void Start()
 	{
 		dayText = GetComponentInChildren<TextMeshProUGUI>();
 
-		if (GameData.Instance.DayCount > 1)
+		if (GameData.DayCount > 1)
 		{
-			dayText.text = GameData.Instance.DayCount.ToString() + " days before...";
+			dayText.text = GameData.DayCount.ToString() + " days before...";
 		}
 		else
 		{
-			dayText.text = GameData.Instance.DayCount.ToString() + " day before...";
+			dayText.text = GameData.DayCount.ToString() + " day before...";
 		}
 
 		StartCoroutine(LoadNextDay());

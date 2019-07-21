@@ -6,6 +6,7 @@
 - DOTween
 - TextMeshPro
 - AnimationImporter: https://github.com/talecrafter/AnimationImporter
+- Project Cleaner: https://github.com/unity-cn/Tool-UnityAssetCleaner
 
 =============
 = Resources =

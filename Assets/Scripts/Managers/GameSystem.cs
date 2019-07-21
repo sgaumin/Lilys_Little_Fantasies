@@ -5,11 +5,7 @@ public class GameSystem : MonoBehaviour
 {
 	public static GameSystem Instance { get; private set; }
 
-	[SerializeField] private LevelTypes levelTypes;
-
-	public GameStates GameState { get; private set; } = GameStates.Play;
-
-	public LevelTypes LevelType { get => levelTypes; }
+	public GameStates GameState { get; set; }
 
 	protected void Awake()
 	{
@@ -17,5 +13,19 @@ public class GameSystem : MonoBehaviour
 		DOTween.Init();
 		DOTween.defaultAutoPlay = AutoPlay.None;
 		DOTween.defaultAutoKill = false;
+
+		GameState = GameStates.Play;
+		Time.timeScale = 1f;
+	}
+
+	protected void Update()
+	{
+#if UNITY_STANDALONE_OSX || UNITY_STANDALONE_WIN || UNITY_STANDALONE_LINUX
+
+		if (Input.GetButtonDown("Quit"))
+		{
+			LevelLoader.Instance.QuitGame();
+		}
+#endif
 	}
 }

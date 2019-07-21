@@ -1,36 +1,31 @@
 ﻿using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
 public class Monster : MonoBehaviour
 {
 	[SerializeField] private float animationDuration = 2;
 	[SerializeField] private float maxMovingDistance = 0;
-	[SerializeField] private MonsterType monsterType = MonsterType.Static;
+	[SerializeField] private MonsterMovementType monsterMovement = MonsterMovementType.Static;
 	[SerializeField] private float forceAmount;
 	[SerializeField] private int lifePoints;
 	[SerializeField] private Color colorDeath;
 	[SerializeField] private float insanityAmount = 0.04f;
 
 	[Header("Sounds")]
-	[SerializeField] private AudioClip hitSound;
-	[SerializeField] private AudioClip deathSound;
+	[SerializeField] private AudioExpress hitSound;
+	[SerializeField] private AudioExpress deathSound;
 
-	private AudioSource audioSource;
-	private Sequence sequence = null;
-	private Collider2D[] colliders;
+	private Sequence sequenceMovement;
+	private Sequence sequenceHit;
+
 	private SpriteRenderer spriteRenderer;
 	private Vector3 startPos;
 	private int lifePointTemp;
 
-	void Start()
+	private void Start()
 	{
-		audioSource = GetComponent<AudioSource>();
 		spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-		colliders = GetComponents<Collider2D>();
 
 		float durationQuarter = animationDuration / 4;
 		float halfDistance = maxMovingDistance / 2;
@@ -38,27 +33,27 @@ public class Monster : MonoBehaviour
 		startPos = transform.localPosition;
 		lifePointTemp = lifePoints;
 
-		switch (monsterType)
+		switch (monsterMovement)
 		{
-			case MonsterType.Vertical:
+			case MonsterMovementType.Vertical:
 				{
-					sequence = DOTween.Sequence();
-					sequence.Append(transform.DOLocalMoveY(transform.position.y - halfDistance, durationQuarter).SetEase(Ease.Linear))
+					sequenceMovement = DOTween.Sequence();
+					sequenceMovement.Append(transform.DOLocalMoveY(transform.position.y - halfDistance, durationQuarter).SetEase(Ease.Linear))
 						.Append(transform.DOLocalMoveY(transform.position.y + halfDistance, durationQuarter * 2).SetEase(Ease.Linear))
 						.Append(transform.DOLocalMoveY(transform.position.y, durationQuarter).SetEase(Ease.Linear))
 						.SetLoops(-1);
-					sequence.Play();
+					sequenceMovement.Play();
 				}
 				break;
-			case MonsterType.Horizontal:
+			case MonsterMovementType.Horizontal:
 				{
-					sequence = DOTween.Sequence();
-					sequence.Append(transform.DOLocalMoveX(startPos.x - halfDistance, durationQuarter).SetEase(Ease.Linear))
+					sequenceMovement = DOTween.Sequence();
+					sequenceMovement.Append(transform.DOLocalMoveX(startPos.x - halfDistance, durationQuarter).SetEase(Ease.Linear))
 						.Append(transform.DOLocalMoveX(startPos.x, durationQuarter).SetEase(Ease.Linear))
 						.Append(transform.DOLocalMoveX(startPos.x + halfDistance, durationQuarter).SetEase(Ease.Linear))
 						.Append(transform.DOLocalMoveX(startPos.x, durationQuarter).SetEase(Ease.Linear))
 						.SetLoops(-1);
-					sequence.Play();
+					sequenceMovement.Play();
 				}
 				break;
 		}
@@ -68,14 +63,13 @@ public class Monster : MonoBehaviour
 	{
 		if (collider.CompareTag("Painting"))
 		{
-			sequence = DOTween.Sequence();
-			sequence.Append(spriteRenderer.DOColor(colorDeath, 0.1f)).Append(spriteRenderer.DOColor(Color.white, 0.1f));
-			sequence.Play();
-
 			lifePoints--;
 
 			if (lifePoints == 0)
 			{
+				sequenceHit?.Kill();
+				sequenceMovement?.Kill();
+
 				GameObject flower = ResourceManager.Instance.GetObject(ObjectType.Flower);
 				if (flower != null)
 				{
@@ -83,58 +77,41 @@ public class Monster : MonoBehaviour
 					flower.transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, 0f);
 				}
 
-				GameObject smoke = ResourceManager.Instance.GetObject(ObjectType.Smoke);
-				if (smoke != null)
+				// Audio
+				if (GameSystem.Instance.GameState == GameStates.Play)
 				{
-					smoke.transform.position = transform.position;
+					deathSound?.Play(gameObject);
 				}
 
-				StartCoroutine(Death());
+				Destroy(gameObject);
 			}
 			else
 			{
+				sequenceHit = DOTween.Sequence();
+				sequenceHit?.Append(spriteRenderer?.DOColor(colorDeath, 0.1f)).Append(spriteRenderer?.DOColor(Color.white, 0.1f));
+				sequenceHit?.Play();
+
 				// Audio
-				audioSource.clip = hitSound;
-				audioSource.Play();
+				if (GameSystem.Instance.GameState == GameStates.Play)
+				{
+					hitSound?.Play(gameObject);
+				}
 			}
 		}
 
 		if (collider.CompareTag("Player"))
 		{
-			Rigidbody2D rb = collider.GetComponent<Rigidbody2D>();
 			bool pushOnLeft = (transform.position.x - collider.transform.position.x) > 0f;
 			Vector2 direction = pushOnLeft ? Vector2.left : Vector2.right;
 			direction += Vector2.up;
 
-			rb?.AddForce(direction * forceAmount);
-			collider.GetComponent<PlayerMovement>().Hitted();
-
-			HUD.Instance.Sanity -= insanityAmount;
+			collider.GetComponent<PlayerMovement>().Hit(insanityAmount, direction * forceAmount);
 		}
-	}
-
-	private IEnumerator Death()
-	{
-		// Audio
-		audioSource.clip = deathSound;
-		audioSource.Play();
-		spriteRenderer.enabled = false;
-		foreach (var collider in colliders)
-		{
-			collider.enabled = false;
-		}
-
-		yield return new WaitForSeconds(1f);
-
-		Destroy(gameObject);
 	}
 
 	public void OnDestroy()
 	{
-		if (sequence != null)
-		{
-			sequence.Kill();
-			sequence = null;
-		}
+		sequenceHit?.Kill();
+		sequenceMovement?.Kill();
 	}
 }

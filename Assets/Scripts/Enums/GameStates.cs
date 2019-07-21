@@ -2,5 +2,6 @@
 {
 	Play,
 	GameOver,
-	Pause
+	Pause,
+	Transition
 }

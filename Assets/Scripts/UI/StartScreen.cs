@@ -1,6 +1,5 @@
 ﻿using DG.Tweening;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -35,10 +34,11 @@ public class StartScreen : MonoBehaviour
 	private IEnumerator Load()
 	{
 		Transition.Instance.FadOut();
+		AudioManager.Instance.FadeOutMusic();
 
 		yield return new WaitForSeconds(1f);
 
-		GameData.Instance.InitializeData();
+		GameData.InitializeData();
 		LevelLoader.Instance.LoadNextLevel();
 	}
 }

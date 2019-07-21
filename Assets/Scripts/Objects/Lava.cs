@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Lava : MonoBehaviour
 {
@@ -20,15 +18,10 @@ public class Lava : MonoBehaviour
 
 	private void OnTriggerStay2D(Collider2D collision)
 	{
-		if (collision.CompareTag("Player"))
+		if (collision.CompareTag("Player") && GameSystem.Instance.GameState == GameStates.Play)
 		{
-			Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
-			rb?.AddForce(Vector2.up * forceAmount);
-
-			collision.GetComponent<PlayerMovement>().Hitted();
+			collision.GetComponent<PlayerMovement>().Hit(insanityAmount, Vector2.up * forceAmount);
 			audioSource.Play();
-
-			HUD.Instance.Sanity -= insanityAmount;
 		}
 	}
 }
