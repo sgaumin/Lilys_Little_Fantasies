@@ -20,9 +20,12 @@ public class GameSystem : MonoBehaviour
 
 	protected void Update()
 	{
+#if UNITY_STANDALONE_OSX || UNITY_STANDALONE_WIN || UNITY_STANDALONE_LINUX
+
 		if (Input.GetButtonDown("Quit"))
 		{
 			LevelLoader.Instance.QuitGame();
 		}
+#endif
 	}
 }
