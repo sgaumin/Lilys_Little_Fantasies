@@ -17,3 +17,6 @@ Sebastien Gaumin (Pixel-Artist & Developer) aka "Mahjoub".
 Harrison Nguyen (Sound Designer & Developer) aka "Sojzi".
 
 Kamelia Jamaati (GamePlay Designer & Developer) aka "Kamj".
+
+## License
+MIT @ [Sébastien Gaumin](https://github.com/sgaumin)
